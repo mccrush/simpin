@@ -7,7 +7,6 @@
       <Step2 v-if="step === 2" />
       <Step3 v-if="step === 3" />
       <button v-if="step > 1" class="btn btn-warning" @click="step--">&nbsp;&#8617;&nbsp;</button>
-      <button v-if="step > 1 && step < 3" class="btn btn-primary" @click="step++"></button>
     </div>
   </div>
 </template>

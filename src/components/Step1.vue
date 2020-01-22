@@ -1,16 +1,36 @@
 <template>
   <div>
-    <h1>Step 1</h1>
+    <h3>Step 1</h3>
+    <p>Придумайте название, и укажите количество шагов вашей инструкции</p>
     <label for="title">Title</label>
-    <input type="text" name="title" id="title" />
-    <label for="countSteps">Title</label>
-    <input type="number" name="countSteps" id="countSteps" size="2" />
+    <br />
+    <input type="text" name="title" v-model.trim="title" />
+    <br />
+    <label for="countSteps">Count Steps</label>
+    <br />
+    <input type="number" name="countSteps" v-model.number="countSteps" max="99" />
+    <br />
+    <button class="btn btn-primary" @click="saveNewInst">Далее</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Step 1"
+  name: "Step 1",
+  date() {
+    return {
+      title: "",
+      countSteps: 1
+    };
+  },
+  methods: {
+    saveNewInst() {
+      this.$store.commit("setInstArr", {
+        title: this.title,
+        countSteps: this.countSteps
+      });
+    }
+  }
 };
 </script>
 

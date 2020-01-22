@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>Список готовых инструкций</h1>
-    <ul>
-      <li v-for="(item, index) in listInst" :key="item.title">{{index+1}}. {{item.title}} | steps: {{item.countSteps}}</li>
+    <ul class="list-group">
+      <li class="list-group-item" v-for="(item, index) in listInst" :key="item.title">{{index+1}}. {{item.title}} | steps: {{item.countSteps}}</li>
     </ul>
   </div>
 </template>
@@ -16,7 +16,9 @@ export default {
     };
   },
   created() {
-    this.listInst = this.$store.commit("getInstArr");
+    //this.listInst = this.$store.commit("getInstArr");
+    this.listInst = this.$store.state.instArr;
+    console.log("this.listInst:", this.listInst);
   }
 };
 </script>

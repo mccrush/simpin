@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <ListInst msg="Welcome to Your Vue.js App" />
+    <ListInst />
   </div>
 </template>
 
