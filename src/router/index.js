@@ -24,7 +24,7 @@ const routes = [
     component: Create
   },
   {
-    path: '/show/:index',
+    path: '/show/:id',
     name: 'show',
     component: Show
   }

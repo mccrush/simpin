@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container shadow pb-3">
+  <div id="app" class="container pb-3">
     <div id="nav">
       <router-link to="/">Home</router-link>&nbsp;|
       <router-link to="/about">About</router-link>&nbsp;|&nbsp;
