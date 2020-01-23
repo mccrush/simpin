@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 col-sm-8">
-    <h3 class="mt-2">Список инструкций</h3>
+    <h4 class="mt-2">Список инструкций</h4>
     <router-link to="/create/1" class="btn btn-success">Создать новую</router-link>
     <ul class="list-group list-group-item-action mt-3">
       <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(item, index) in listInst" :key="index">

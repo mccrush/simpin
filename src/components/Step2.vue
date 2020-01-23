@@ -5,12 +5,12 @@
     <p>Заполнение всех шагов в цикле: {{tecStep}} из {{allSteps}}</p>
     <div class="form-group text-left">
       <label for="title">Название шага</label>
-      <input class="form-control" type="text" name="title" v-model.trim="title" />
+      <input class="form-control" type="text" name="title" v-model.trim="title" required />
     </div>
 
     <div class="form-group text-left">
       <label for="description">Описание</label>
-      <input class="form-control" type="text" name="description" v-model.trim="description" />
+      <input class="form-control" type="text" name="description" v-model.trim="description" required />
     </div>
 
     <div class="row">
@@ -42,6 +42,15 @@ export default {
   },
   methods: {
     saveNewStep() {
+      if (this.title == "") {
+        alert("А как же название?");
+        return false;
+      }
+      if (this.description == "") {
+        alert("Что же это за инструкция без описания? А?");
+        return false;
+      }
+
       const res = this.$store.commit("setNewStep", {
         content: {
           title: this.title,
