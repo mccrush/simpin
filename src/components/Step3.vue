@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="mt-2 text-left">Step 3</h4>
+    <h4 class="mt-2">Step 3</h4>
     <hr />
     <p>Поздравляю! Вы создали прекрасную интсрукцию!</p>
     <router-link to="/" class="btn btn-block btn-primary">К списку инструкций</router-link>

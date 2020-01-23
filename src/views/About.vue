@@ -1,5 +1,12 @@
 <template>
   <div class="about">
-    <h4>This is an about page</h4>
+    <h4 class="mt-2">О приложении</h4>
+    <hr />
+    <p class="text-left">Приложение для создания интерактивных инструкций. Один шаг - одно простое действие. Создавайте и делитесь инструкциями с друзъями.</p>
+    <p class="text-left">
+      Продукт защищен законом о защите авторских прав. Права принадлежат компании
+      <a href="https://mccrush.ru" target="_blank">mccrush.ru</a>
+    </p>
+    <p class="text-left">По всем вопросам можете писать на почту mccrush2027@gmail.com</p>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="mt-2 text-left">Шаг 1</h4>
+    <h4 class="mt-2">Шаг 1</h4>
     <hr />
     <p>Придумайте название, и укажите количество шагов вашей инструкции</p>
     <div class="form-group text-left">

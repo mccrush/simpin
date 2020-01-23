@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="mt-2 text-left">Шаг 2</h4>
+    <h4 class="mt-2">Шаг 2</h4>
     <hr />
     <p>Заполнение всех шагов в цикле: {{tecStep}} из {{allSteps}}</p>
     <div class="form-group text-left">
