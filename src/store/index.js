@@ -28,6 +28,9 @@ export default new Vuex.Store({
     },
     setInstArr(state, payload) {
       state.instArr.push(payload);
+    },
+    setNewStep(state, payload) {
+      state.instArr[payload.index].step.push(payload.content);
     }
   },
   actions: {

@@ -19,7 +19,7 @@ const routes = [
   }
   ,
   {
-    path: '/create',
+    path: '/create/:step',
     name: 'create',
     component: Create
   }

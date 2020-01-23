@@ -1,12 +1,11 @@
 <template>
-  <div class="create row">
-    <div class="col-8">
+  <div class="create row justify-content-sm-center">
+    <div class="col-12 col-sm-8 border">
       <h1>This is an Create page</h1>
       <hr />
-      <Step1 v-if="step === 1" />
-      <Step2 v-if="step === 2" />
-      <Step3 v-if="step === 3" />
-      <button v-if="step > 1" class="btn btn-warning" @click="step--">&nbsp;&#8617;&nbsp;</button>
+      <Step1 v-if="this.$route.params.step == '1'" />
+      <Step2 v-if="this.$route.params.step == '2'" />
+      <Step3 v-if="this.$route.params.step == '3'" />
     </div>
   </div>
 </template>
@@ -20,9 +19,7 @@ import Step3 from "@/components/Step3.vue";
 export default {
   name: "create",
   data() {
-    return {
-      step: 1
-    };
+    return {};
   },
   components: {
     Step1,

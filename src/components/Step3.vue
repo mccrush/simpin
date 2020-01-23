@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Step 3</h1>
+    <h3>Step 3</h3>
     <p>Поздравляю! Вы создали прекрасную интсрукцию!</p>
     <router-link to="/">К списку инструкций</router-link>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "Step 3"
+  name: "Step3"
 };
 </script>
 

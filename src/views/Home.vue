@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row justify-content-sm-center">
     <ListInst />
   </div>
 </template>
