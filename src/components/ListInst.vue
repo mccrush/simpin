@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 col-sm-8">
-    <h4 class="mt-2">Список инструкций</h4>
+    <h5 class="mt-2">Список инструкций</h5>
     <hr />
     <router-link to="/create/1" class="btn btn-success">Создать новую</router-link>
     <ul class="list-group list-group-item-action mt-3">

@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h4 class="mt-2">Step 3</h4>
+    <h5 class="mt-2 text-left">3. Все готово</h5>
     <hr />
-    <p>Поздравляю! Вы создали прекрасную интсрукцию!</p>
+    <p>
+      Поздравляем!
+      <br />Вы создали прекрасную инструкцию!
+    </p>
     <router-link to="/" class="btn btn-block btn-primary">К списку инструкций</router-link>
   </div>
 </template>

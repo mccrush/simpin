@@ -1,9 +1,11 @@
 <template>
   <div class="create row justify-content-sm-center">
     <div class="col-12 col-sm-8">
-      <h4 class="mt-2">{{tecInstArr[tecStep-1].title}}</h4>
+      <h4 v-if="tecStep == 0" class="mt-2">{{tecInst.title}}</h4>
+      <h4 v-if="tecStep > 0" class="mt-2">{{tecInstArr[tecStep-1].title}}</h4>
       <hr />
-      <p>{{tecInstArr[tecStep-1].description}}</p>
+      <p v-if="tecStep == 0">{{tecInst.description}}</p>
+      <p v-if="tecStep > 0">{{tecInstArr[tecStep-1].description}}</p>
       <div class="row">
         <div class="col-3">
           <button class="btn btn-block btn-warning" @click="prevStep">&nbsp;&#8617;&nbsp;</button>
@@ -25,7 +27,7 @@ export default {
     return {
       instId: "",
       tecIndex: 1,
-      tecStep: 1,
+      tecStep: 0,
       tecInst: {},
       tecInstArr: []
     };
@@ -51,7 +53,7 @@ export default {
       }
     },
     prevStep() {
-      if (this.tecStep > 1) {
+      if (this.tecStep > 0) {
         this.tecStep--;
       } else {
         this.$router.push("/");

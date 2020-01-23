@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h4 class="mt-2">Шаг 2</h4>
-    <hr />
-    <p>Заполнение всех шагов в цикле: {{tecStep}} из {{allSteps}}</p>
+    <h5 class="mt-2 text-left">2. Заполните все шаги</h5>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" :style="barWidth" :aria-valuenow="tecStep" aria-valuemin="0" :aria-valuemax="allSteps">{{tecStep}} из {{allSteps}}</div>
+    </div>
+    <br />
+
     <div class="form-group text-left">
       <label for="title">Название шага</label>
       <input class="form-control" type="text" name="title" v-model.trim="title" required />
@@ -10,7 +13,7 @@
 
     <div class="form-group text-left">
       <label for="description">Описание</label>
-      <input class="form-control" type="text" name="description" v-model.trim="description" required />
+      <textarea class="form-control" name="description" v-model.trim="description" required autofocus></textarea>
     </div>
 
     <div class="row">
@@ -32,13 +35,15 @@ export default {
       tecInst: 1,
       tecStep: 1,
       allSteps: 1,
-      title: "",
-      description: ""
+      title: "Шаг 1",
+      description: "",
+      barWidth: "width: 0%"
     };
   },
   created() {
     this.tecInst = this.$store.state.instArr.length - 1;
     this.allSteps = this.$store.state.instArr[this.tecInst].countSteps;
+    this.barWidth = "width:" + (this.tecStep * 100) / this.allSteps + "%;";
   },
   methods: {
     saveNewStep() {
@@ -63,8 +68,9 @@ export default {
         this.$router.push("/create/3");
       } else {
         this.tecStep++;
-        this.title = "";
+        this.title = "Шаг " + this.tecStep;
         this.description = "";
+        this.barWidth = "width:" + (this.tecStep * 100) / this.allSteps + "%;";
       }
     },
     prevStep() {

@@ -1,31 +1,34 @@
 <template>
   <div>
-    <h4 class="mt-2">Шаг 1</h4>
+    <h5 class="mt-2 text-left">1. Введите название и количество шагов</h5>
     <hr />
-    <p>Введите название и количество шагов</p>
     <div class="form-group text-left">
       <label for="title">Название инструкции</label>
-      <input class="form-control" type="text" name="title" id="title" v-model.trim="title" required />
+      <input class="form-control" type="text" name="title" id="title" v-model.trim="title" required autofocus />
+    </div>
+    <div class="form-group text-left">
+      <label for="description">Описание инструкции</label>
+      <textarea class="form-control" name="description" id="description" v-model.trim="description" placeholder="Опционально"></textarea>
     </div>
     <div class="form-group text-left">
       <label for="countSteps">Количество шагов</label>
       <div class="input-group">
-        <input class="form-control" type="text" name="countSteps" id="countSteps" aria-describedby="button-addon4" v-model.number="countSteps" min="1" max="99" step="1" required />
+        <input class="form-control form-control-lg" type="text" name="countSteps" id="countSteps" aria-describedby="button-addon4" v-model.number="countSteps" min="1" max="99" step="1" required />
         <div class="input-group-append" id="button-addon4">
-          <button class="btn btn-outline-secondary" type="button" @click="countSteps--">&or;</button>
-          <button class="btn btn-outline-secondary" type="button" @click="countSteps++">&and;</button>
+          <button class="btn btn-outline-secondary btn-lg" type="button" @click="countSteps--">&or;</button>
+          <button class="btn btn-outline-secondary btn-lg" type="button" @click="countSteps++">&nbsp;&nbsp;&and;&nbsp;&nbsp;</button>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-3">
-        <router-link to="/" class="btn btn-block btn-warning" title="Отмена">&nbsp;&lt;&nbsp;</router-link>
+        <router-link to="/" class="btn btn-block btn-warning btn-lg" title="Отмена">&nbsp;&lt;&nbsp;</router-link>
       </div>
       <div class="col-3">
-        <button class="btn btn-block btn-danger" title="Удалить">&nbsp;D&nbsp;</button>
+        <button class="btn btn-block btn-danger btn-lg" title="Удалить">&nbsp;D&nbsp;</button>
       </div>
       <div class="col-6">
-        <button class="btn btn-block btn-primary" @click="saveNewInst">Далее</button>
+        <button class="btn btn-block btn-primary btn-lg" @click="saveNewInst">Далее</button>
       </div>
     </div>
   </div>
@@ -38,22 +41,24 @@ export default {
     return {
       id: "" + Date.now(),
       title: "",
+      description: "",
       countSteps: 1
     };
   },
   methods: {
     saveNewInst() {
-      if (this.countSteps < 1) {
-        alert("Количество шагов не может быть меньше 1");
-        return false;
-      }
       if (this.title == "") {
         alert("А как же название?");
+        return false;
+      }
+      if (this.countSteps < 1) {
+        alert("Количество шагов не может быть меньше 1");
         return false;
       }
       this.$store.commit("setInstArr", {
         id: this.id,
         title: this.title,
+        description: this.description,
         countSteps: this.countSteps,
         step: []
       });
