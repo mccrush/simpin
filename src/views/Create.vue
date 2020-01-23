@@ -1,8 +1,6 @@
 <template>
   <div class="create row justify-content-sm-center">
-    <div class="col-12 col-sm-8 border">
-      <h1>This is an Create page</h1>
-      <hr />
+    <div class="col-12 col-sm-8">
       <Step1 v-if="this.$route.params.step == '1'" />
       <Step2 v-if="this.$route.params.step == '2'" />
       <Step3 v-if="this.$route.params.step == '3'" />
