@@ -6,7 +6,10 @@
     <ul class="list-group list-group-item-action mt-3">
       <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(item, index) in listInst" :key="index">
         <span>{{index+1}}. {{item.title}} | steps: {{item.countSteps}}</span>
-        <span>Edit | Run</span>
+        <span>
+          Edit |
+          <router-link :to="'/show/'+index" class="btn btn-primary">&gt;</router-link>
+        </span>
       </li>
     </ul>
   </div>

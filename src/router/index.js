@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Create from '../views/Create.vue'
+import Show from '../views/Show.vue'
 
 Vue.use(VueRouter)
 
@@ -16,12 +17,16 @@ const routes = [
     path: '/about',
     name: 'about',
     component: About
-  }
-  ,
+  },
   {
     path: '/create/:step',
     name: 'create',
     component: Create
+  },
+  {
+    path: '/show/:index',
+    name: 'show',
+    component: Show
   }
 ]
 
