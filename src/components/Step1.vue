@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5 class="mt-2 text-left">1. Введите название и количество шагов</h5>
+    <h5 class="mt-2 text-left">1. Название и количество шагов</h5>
     <hr />
     <div class="form-group text-left">
       <label for="title">Название инструкции</label>

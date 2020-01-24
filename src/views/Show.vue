@@ -1,6 +1,6 @@
 <template>
   <div class="create row justify-content-sm-center">
-    <div class="col-12 col-sm-8">
+    <div class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h4 v-if="tecStep == 0" class="mt-2">{{tecInst.title}}</h4>
       <h4 v-if="tecStep > 0" class="mt-2">{{tecInstArr[tecStep-1].title}}</h4>
       <hr />

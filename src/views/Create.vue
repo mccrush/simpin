@@ -1,6 +1,6 @@
 <template>
   <div class="create row justify-content-sm-center">
-    <div class="col-12 col-sm-8">
+    <div class="col-12 col-sm-8 col-md-6 col-xl-4">
       <Step1 v-if="this.$route.params.step == '1'" />
       <Step2 v-if="this.$route.params.step == '2'" />
       <Step3 v-if="this.$route.params.step == '3'" />
