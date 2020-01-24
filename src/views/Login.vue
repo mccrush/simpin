@@ -1,22 +1,29 @@
 <template>
-  <div class="row home justify-content-center">
-    <div class="col-12 col-sm-8 col-md-6 col-xl-4 text-left mt-4">
-      <h4 class="text-center">Авторизуйтесь</h4>
-      <label for="email">Email:</label>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 col-md-6 col-xl-4 text-left">
+      <h5 v-if="this.$store.state.authType == 'login'" class="mt-2 text-left">Вход</h5>
+      <h5 v-if="this.$store.state.authType == 'signin'" class="mt-2 text-left">Регистрация</h5>
+      <h5 v-if="this.$store.state.authType == 'restor'" class="mt-2 text-left">Восстановление пароля</h5>
+      <hr />
+      <label for="email">Email</label>
       <br />
       <input type="text" class="form-control" id="email" v-model="email" />
       <br />
-      <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" v-model="password" />
+      <label v-if="this.$store.state.authType !== 'restor'" for="password">Password</label>
+      <input v-if="this.$store.state.authType !== 'restor'" type="password" class="form-control" id="password" v-model="password" />
       <br />
-      <div class="row">
-        <div class="col-6 d-none">
-          <button class="btn btn-success btn-block">Регистрация</button>
-        </div>
-        <div class="col-12">
-          <button class="btn btn-success btn-block" @click="login">Вход</button>
-        </div>
-      </div>
+
+      <button v-if="this.$store.state.authType == 'login'" class="btn btn-success btn-block" @click="login">Войти</button>
+      <button v-if="this.$store.state.authType == 'signin'" class="btn btn-success btn-block" @click="signin">Зарегистрироваться</button>
+      <button v-if="this.$store.state.authType == 'restor'" class="btn btn-success btn-block" @click="restor">Восстановить пароль</button>
+
+      <p class="text-center mt-2 text-small">
+        <button v-if="this.$store.state.authType !== 'login'" class="btn btn-link d-inline" type="button" @click="showLoginForm">Вход</button>
+        <span v-if="this.$store.state.authType !== 'login'">|</span>
+        <button v-if="this.$store.state.authType !== 'signin'" class="btn btn-link d-inline" type="button" @click="showRegForm">Регистрация</button>
+        <span v-if="this.$store.state.authType !== 'signin' && this.$store.state.authType !== 'restor'">|</span>
+        <button v-if="this.$store.state.authType !== 'restor'" class="btn btn-link d-inline" type="button" @click="showRestorForm">Восстановление пароля</button>
+      </p>
     </div>
   </div>
 </template>
@@ -44,7 +51,7 @@ export default {
           var errorMessage = error.message;
           alert("Login: errors:", errorCode, "& ", errorMessage);
         });
-    }
+    },
     // signin() {
     //   auth
     //     .createUserWithEmailAndPassword(this.email, this.password)
@@ -58,6 +65,17 @@ export default {
     //       alert("Signin: errors:", errorCode, "& ", errorMessage);
     //     });
     // }
+    signin() {},
+    restor() {},
+    showLoginForm() {
+      this.$store.commit("setAuthType", { type: "login" });
+    },
+    showRegForm() {
+      this.$store.commit("setAuthType", { type: "signin" });
+    },
+    showRestorForm() {
+      this.$store.commit("setAuthType", { type: "restor" });
+    }
   }
 };
 </script>

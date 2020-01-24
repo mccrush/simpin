@@ -26,7 +26,8 @@ export default new Vuex.Store({
       title: "",
       description: "",
       countSteps: ''
-    }
+    },
+    authType: 'login'
   },
   mutations: {
     getInstArr(state) {
@@ -43,6 +44,9 @@ export default new Vuex.Store({
       state.tecValue.title = payload.id;
       state.tecValue.description = payload.id;
       state.tecValue.countSteps = payload.countSteps;
+    },
+    setAuthType(state, payload) {
+      state.authType = payload.type;
     }
   },
   actions: {
