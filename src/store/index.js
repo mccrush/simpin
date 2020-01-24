@@ -22,7 +22,10 @@ export default new Vuex.Store({
       }
     ],
     tecValue: {
-      id: "", title: "", description: "", countSteps: ''
+      id: "",
+      title: "",
+      description: "",
+      countSteps: ''
     }
   },
   mutations: {

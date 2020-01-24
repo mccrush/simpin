@@ -16,7 +16,7 @@
         <span>{{index+1}}. {{item.title}}</span>
         <span>
           Edit |
-          <router-link :to="'/show/'+item.id" class="btn btn-sm btn-primary">&gt;</router-link>
+          <router-link :to="'/show/'+item.id" class="btn btn-sm btn-success">&gt;</router-link>
         </span>
       </li>
     </ul>

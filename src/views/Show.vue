@@ -1,17 +1,17 @@
 <template>
-  <div class="create row justify-content-sm-center">
+  <div class="row justify-content-sm-center">
     <div class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h4 v-if="tecStep == 0" class="mt-2">{{tecInst.title}}</h4>
       <h4 v-if="tecStep > 0" class="mt-2">{{tecInstArr[tecStep-1].title}}</h4>
       <hr />
-      <p v-if="tecStep == 0">{{tecInst.description}}</p>
-      <p v-if="tecStep > 0">{{tecInstArr[tecStep-1].description}}</p>
+      <p class="text-left" v-if="tecStep == 0">{{tecInst.description}}</p>
+      <p class="text-left" v-if="tecStep > 0">{{tecInstArr[tecStep-1].description}}</p>
       <div class="row">
         <div class="col-3">
-          <button class="btn btn-block btn-warning" @click="prevStep">&nbsp;&#8617;&nbsp;</button>
+          <button class="btn btn-block btn-success" @click="prevStep">&nbsp;&#8617;&nbsp;</button>
         </div>
         <div class="col-9">
-          <button class="btn btn-block btn-primary" @click="nextStep">Далее</button>
+          <button class="btn btn-block btn-success" @click="nextStep">Далее</button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <div>
     <h5 class="mt-2 text-left">2. Заполните все шаги</h5>
     <div class="progress">
-      <div class="progress-bar" role="progressbar" :style="barWidth" :aria-valuenow="tecStep" aria-valuemin="0" :aria-valuemax="allSteps">{{tecStep}} из {{allSteps}}</div>
+      <div class="progress-bar bg-success" role="progressbar" :style="barWidth" :aria-valuenow="tecStep" aria-valuemin="0" :aria-valuemax="allSteps">{{tecStep}} из {{allSteps}}</div>
     </div>
     <br />
 
@@ -18,10 +18,10 @@
 
     <div class="row">
       <div class="col-3">
-        <button class="btn btn-block btn-warning" @click="prevStep">&nbsp;&#8617;&nbsp;</button>
+        <button class="btn btn-block btn-success" @click="prevStep">&nbsp;&#8617;&nbsp;</button>
       </div>
       <div class="col-9">
-        <button class="btn btn-block btn-primary" @click="saveNewStep">Далее</button>
+        <button class="btn btn-block btn-success" @click="saveNewStep">Далее</button>
       </div>
     </div>
   </div>

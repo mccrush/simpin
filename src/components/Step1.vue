@@ -22,13 +22,13 @@
     </div>
     <div class="row">
       <div class="col-3">
-        <router-link to="/" class="btn btn-block btn-warning" title="Отмена">&nbsp;&lt;&nbsp;</router-link>
+        <router-link to="/" class="btn btn-block btn-success" title="Отмена">&nbsp;&lt;&nbsp;</router-link>
       </div>
       <div class="col-3">
-        <button class="btn btn-block btn-danger" title="Удалить">&nbsp;D&nbsp;</button>
+        <button class="btn btn-block btn-light" title="Удалить">&nbsp;D&nbsp;</button>
       </div>
       <div class="col-6">
-        <button class="btn btn-block btn-primary" @click="saveNewInst">Далее</button>
+        <button class="btn btn-block btn-success" @click="saveNewInst">Далее</button>
       </div>
     </div>
   </div>
