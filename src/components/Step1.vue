@@ -22,13 +22,13 @@
     </div>
     <div class="row">
       <div class="col-3">
-        <router-link to="/" class="btn btn-block btn-warning btn-lg" title="Отмена">&nbsp;&lt;&nbsp;</router-link>
+        <router-link to="/" class="btn btn-block btn-warning" title="Отмена">&nbsp;&lt;&nbsp;</router-link>
       </div>
       <div class="col-3">
-        <button class="btn btn-block btn-danger btn-lg" title="Удалить">&nbsp;D&nbsp;</button>
+        <button class="btn btn-block btn-danger" title="Удалить">&nbsp;D&nbsp;</button>
       </div>
       <div class="col-6">
-        <button class="btn btn-block btn-primary btn-lg" @click="saveNewInst">Далее</button>
+        <button class="btn btn-block btn-primary" @click="saveNewInst">Далее</button>
       </div>
     </div>
   </div>
@@ -55,6 +55,14 @@ export default {
         alert("Количество шагов не может быть меньше 1");
         return false;
       }
+
+      this.$store.commit("setTecValue", {
+        id: this.id,
+        title: this.title,
+        description: this.description,
+        countSteps: this.countSteps
+      });
+
       this.$store.commit("setInstArr", {
         id: this.id,
         title: this.title,
@@ -65,7 +73,8 @@ export default {
 
       this.$router.push("/create/2");
     }
-  }
+  },
+  computed: {}
 };
 </script>
 

@@ -20,7 +20,10 @@ export default new Vuex.Store({
           }
         ]
       }
-    ]
+    ],
+    tecValue: {
+      id: "", title: "", description: "", countSteps: ''
+    }
   },
   mutations: {
     getInstArr(state) {
@@ -31,6 +34,12 @@ export default new Vuex.Store({
     },
     setNewStep(state, payload) {
       state.instArr[payload.index].step.push(payload.content);
+    },
+    setTecValue(state, payload) {
+      state.tecValue.id = payload.id;
+      state.tecValue.title = payload.id;
+      state.tecValue.description = payload.id;
+      state.tecValue.countSteps = payload.countSteps;
     }
   },
   actions: {

@@ -1,8 +1,16 @@
 <template>
   <div class="col-12 col-sm-8">
-    <h5 class="mt-2">Список инструкций</h5>
+    <div class="row">
+      <div class="col-8 text-left">
+        <h5 class="mt-2">Список инструкций</h5>
+      </div>
+      <div class="col-4 text-right">
+        <router-link to="/create/1" class="btn btn-success">Создать</router-link>
+      </div>
+    </div>
+
     <hr />
-    <router-link to="/create/1" class="btn btn-success">Создать новую</router-link>
+
     <ul class="list-group list-group-item-action mt-3">
       <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(item, index) in listInst" :key="item.id">
         <span>{{index+1}}. {{item.title}}</span>
