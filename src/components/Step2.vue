@@ -88,6 +88,7 @@ export default {
           tecIndex
         ].description;
       } else {
+        this.$emit("getvalue");
         this.$router.push("/create/1");
       }
     }

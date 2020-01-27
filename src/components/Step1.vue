@@ -4,7 +4,7 @@
     <hr />
     <div class="form-group text-left">
       <label for="title">Название инструкции</label>
-      <input class="form-control" type="text" name="title" id="title" v-model.trim="title" required autofocus />
+      <input class="form-control" type="text" name="title" id="title" v-model.trim="title" required autofocus @getvalue="getInstValue" />
     </div>
     <div class="form-group text-left">
       <label for="description">Описание инструкции</label>
@@ -63,6 +63,8 @@ export default {
         countSteps: this.countSteps
       });
 
+      // Здесь проверка на существование объекта, чтобы понимать
+      // объект создается или редактируется
       this.$store.commit("setInstArr", {
         id: this.id,
         title: this.title,
@@ -72,6 +74,13 @@ export default {
       });
 
       this.$router.push("/create/2");
+    },
+    getInstValue() {
+      console.log("Данный метод вызван");
+      this.id = this.$store.state.tecValue.id;
+      this.title = this.$store.state.tecValue.title;
+      this.description = this.$store.state.tecValue.description;
+      this.countSteps = this.$store.state.tecValue.countSteps;
     }
   },
   computed: {}

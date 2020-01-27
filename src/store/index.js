@@ -47,8 +47,8 @@ export default new Vuex.Store({
     },
     setTecValue(state, payload) {
       state.tecValue.id = payload.id;
-      state.tecValue.title = payload.id;
-      state.tecValue.description = payload.id;
+      state.tecValue.title = payload.title;
+      state.tecValue.description = payload.description;
       state.tecValue.countSteps = payload.countSteps;
     },
     setAuthType(state, payload) {
