@@ -26,12 +26,17 @@ const routes = [
     component: Login
   },
   {
-    path: '/create/:step',
+    path: '/create/:id',
     name: 'create',
     component: Create,
-    meta: {
-      requiresAuth: true
-    }
+    props: true
+    // meta: {
+    //   requiresAuth: true
+    // }
+  },
+  {
+    path: '/create',
+    redirect: '/create/new'
   },
   {
     path: '/show/:id',

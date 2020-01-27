@@ -5,7 +5,7 @@
         <h5 class="mt-2">Список инструкций</h5>
       </div>
       <div class="col-4 text-right">
-        <router-link to="/create/1" class="btn btn-success">Создать</router-link>
+        <router-link to="/create" class="btn btn-success">Создать</router-link>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
       <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(item, index) in listInst" :key="item.id">
         <span>{{index+1}}. {{item.title}}</span>
         <span>
-          Edit |
+          <router-link :to="'/create/'+item.id" class="btn btn-sm btn-success">E</router-link>|
           <router-link :to="'/show/'+item.id" class="btn btn-sm btn-success">&gt;</router-link>
         </span>
       </li>
