@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-12 col-sm-8 col-md-6 col-xl-4">
-      <Createinst v-if="state == 'inst'" @nextstep="changeSate"></Createinst>
+      <Createinst v-if="state == 'inst'" @changeState="state = 'step'" :addNewInst="addNewInst"></Createinst>
       <Createstep v-if="state == 'step'"></Createstep>
     </div>
   </div>
@@ -13,6 +13,9 @@ import Createstep from "@/components/Createstep.vue";
 
 export default {
   name: "Create",
+  props: {
+    addNewInst: Function
+  },
   components: {
     Createinst,
     Createstep
@@ -22,11 +25,7 @@ export default {
       state: "inst"
     };
   },
-  methods: {
-    changeSate() {
-      this.state == "step";
-    }
-  }
+  methods: {}
 };
 </script>
 

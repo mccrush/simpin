@@ -5,19 +5,18 @@
         <div class="col-8 text-left">
           <h5 class="mt-2">Список инструкций</h5>
         </div>
-        <div class="col-4 text-right">
-          <router-link to="/create" class="btn btn-success">Создать</router-link>
-        </div>
+        <div class="col-4 text-right">+</div>
       </div>
 
       <hr />
 
       <ul class="list-group list-group-item-action mt-3">
+        <li v-if="!listArray.length" class="list-group-item d-flex justify-content-between align-items-center">Инструкций нет</li>
         <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(item, index) in listArray" :key="item.id">
           <span>{{index+1}}. {{item.title}}</span>
           <span>
-            <router-link :to="'/create/'+item.id" class="btn btn-sm btn-success">E</router-link>|
-            <router-link :to="'/show/'+item.id" class="btn btn-sm btn-success">&gt;</router-link>
+            <button class="btn btn-sm btn-light" @click="$emit('delete',item.id)">D</button>&nbsp;
+            <button class="btn btn-sm btn-success" @click="$emit('show', item.id)">S ></button>
           </span>
         </li>
       </ul>
@@ -29,10 +28,16 @@
 export default {
   name: "List",
   props: {
-    listArray: Array
+    listArray: Array,
+    removeItem: Function
   },
   data() {
     return {};
+  },
+  methods: {
+    deleteItem(id) {
+      this.removeItem(id);
+    }
   }
 };
 </script>

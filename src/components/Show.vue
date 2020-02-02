@@ -4,6 +4,7 @@
       <div class="row">
         <div class="col-8 text-left">
           <h5 class="mt-2">Просмотр</h5>
+          <h6>{{ instruction.title }}</h6>
         </div>
       </div>
       <hr />
@@ -14,6 +15,9 @@
 <script>
 export default {
   name: "Show",
+  props: {
+    instruction: Object
+  },
   data() {
     return {};
   }
