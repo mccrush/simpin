@@ -1,13 +1,42 @@
 <template>
   <div id="app" class="container pb-3">
     <div id="nav">
-      <router-link to="/">Home</router-link>&nbsp;|
-      <router-link to="/about">About</router-link>
-      <!-- <router-link to="/create/1">Create</router-link> -->
+      <a href="#" @click.prevent="state = 'list'">Список</a> |
+      <a href="#" @click.prevent="state = 'login'">Вход</a> |
+      <a href="#" @click.prevent="state = 'create'">Создать</a>
     </div>
-    <router-view />
+    <List v-if="state == 'list'" :listArray="listArray"></List>
+    <Login v-if="state == 'login'"></Login>
+    <Create v-if="state == 'create'"></Create>
+    <Show v-if="state == 'show'"></Show>
   </div>
 </template>
+
+<script>
+import List from "@/components/List.vue";
+import Login from "@/components/Login.vue";
+import Create from "@/components/Create.vue";
+import Show from "@/components/Show.vue";
+
+export default {
+  name: "app",
+  components: {
+    List,
+    Login,
+    Create,
+    Show
+  },
+  data() {
+    return {
+      state: "list",
+      listArray: [
+        { id: "4234", title: "i1", description: "d1" },
+        { id: "42sdfs34", title: "i2", description: "d2" }
+      ]
+    };
+  }
+};
+</script>
 
 <style>
 .container {

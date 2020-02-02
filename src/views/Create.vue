@@ -12,9 +12,9 @@
 
 <script>
 // @ is an alias to /src
-import Step1 from "@/components/Step1.vue";
-import Step2 from "@/components/Step2.vue";
-import Step3 from "@/components/Step3.vue";
+import Step1 from "@/_components/Step1.vue";
+import Step2 from "@/_components/Step2.vue";
+import Step3 from "@/_components/Step3.vue";
 
 export default {
   name: "create",
