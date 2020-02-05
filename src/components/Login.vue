@@ -47,6 +47,7 @@ export default {
         .then(user => {
           //this.$store.commit("setUser", user.user.uid);
           //this.$router.push("/create/1");
+          //console.log("Auth user.email:", user.name);
         })
         .catch(function(error) {
           var errorCode = error.code;

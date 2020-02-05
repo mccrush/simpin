@@ -7,6 +7,8 @@ import store from './store'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+import { apiKey } from '../apiKey'
+
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore"; // DB
@@ -14,7 +16,7 @@ import "firebase/storage"; // File
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDyxP4Wmv71AejtJnBAwoqMuPZA_XCGSoc",
+  apiKey: apiKey,
   authDomain: "simpin-36cfc.firebaseapp.com",
   databaseURL: "https://simpin-36cfc.firebaseio.com",
   projectId: "simpin-36cfc",
