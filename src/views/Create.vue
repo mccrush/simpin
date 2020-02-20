@@ -1,7 +1,7 @@
 <template>
   <div class="create row justify-content-sm-center">
     <div class="col-12 col-sm-8 col-md-6 col-xl-4">
-      <h5>Создание</h5>
+      <h5>Создание инструкции</h5>
       <hr />
       <form @submit.prevent="addInstruction">
         <div class="form-group">
@@ -15,11 +15,11 @@
           <small class="form-text text-muted text-right">{{description.length}}/1024</small>
         </div>
         <div class="form-group">
-          <label for="steps">Количество шагов</label>
-          <input type="number" class="form-control" id="steps" v-model.number="steps" min="1" max="32" step="1" />
-          <small class="form-text text-muted text-right">{{steps}}/32</small>
+          <label for="countsteps">Количество шагов</label>
+          <input type="number" class="form-control" id="countsteps" v-model.number="countsteps" min="1" max="32" step="1" />
+          <small class="form-text text-muted text-right">{{countsteps}}/32</small>
         </div>
-        <button type="submit" class="btn btn-block btn-light" :class="{disabled: !title.length}">Создать</button>
+        <button type="submit" class="btn btn-block btn-light" :class="{disabled: !title.length}">Далее</button>
       </form>
     </div>
   </div>
@@ -34,7 +34,7 @@ export default {
     return {
       title: "",
       description: "",
-      steps: 1
+      countsteps: 1
     };
   },
   created() {},
@@ -44,14 +44,15 @@ export default {
         const instruction = {
           title: this.title,
           description: this.description,
-          steps: this.steps,
+          countsteps: this.countsteps,
+          steps: [],
           id: Date.now(),
           status: "active",
           date: new Date()
         };
 
         this.$store.dispatch("createInstruction", instruction);
-        this.$router.push("/");
+        this.$router.push("/createstep/" + instruction.id);
       } else {
         alert('Поле "Название инструкции" обязательно к заполнению!');
       }
