@@ -7,7 +7,10 @@
       <button class="btn btn-block btn-success" @click="currentstep = 0">Запустить инструкцию</button>
     </div>
     <div v-else-if="instruction && currentstep != null" class="col-12 col-sm-8 col-md-6 col-xl-4">
-      <h5>{{instruction.steps[currentstep].title}}</h5>
+      <h5 class="d-flex justify-content-between">
+        <span>{{instruction.steps[currentstep].title}}</span>
+        <span class="text-muted small mt-1">{{currentstep + 1}}/{{this.instruction.countsteps}}</span>
+      </h5>
       <hr />
       <p>{{instruction.steps[currentstep].description}}</p>
 
@@ -49,3 +52,6 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+</style>
