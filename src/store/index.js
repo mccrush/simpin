@@ -58,6 +58,9 @@ export default new Vuex.Store({
   },
   actions: {
   },
+  getters: {
+    instructions: state => state.instructions
+  },
   modules: {
   }
 })
