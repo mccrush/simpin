@@ -5,7 +5,7 @@
       <hr />
       <p>{{instruction.description}}</p>
       <button class="btn btn-block btn-success" @click="currentstep = 0">Запустить инструкцию</button>
-      <router-link to="/" class="btn btn-block btn-light">К списку инструкций</router-link>
+      <router-link to="/" class="btn btn-block btn-light border">К списку инструкций</router-link>
     </div>
     <div v-else-if="instruction && currentstep != null" class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5 class="d-flex justify-content-between">
@@ -17,10 +17,10 @@
 
       <div class="row">
         <div class="col-6">
-          <button class="btn btn-block btn-light" @click="currentstep--">Назад</button>
+          <button class="btn btn-block btn-light border" @click="currentstep--">Назад</button>
         </div>
         <div class="col-6">
-          <button class="btn btn-block btn-light" @click="currentstep++">Далее</button>
+          <button class="btn btn-block btn-light border" @click="currentstep++">Далее</button>
         </div>
       </div>
 
