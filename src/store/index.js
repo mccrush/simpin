@@ -37,26 +37,34 @@ export default new Vuex.Store({
     authType: 'login'
   },
   mutations: {
-    getInstArr(state) {
-      return state.instArr;
-    },
-    setInstArr(state, payload) {
-      state.instArr.push(payload);
-    },
-    setNewStep(state, payload) {
-      state.instArr[payload.index].step.push(payload.content);
-    },
-    setTecValue(state, payload) {
-      state.tecValue.id = payload.id;
-      state.tecValue.title = payload.title;
-      state.tecValue.description = payload.description;
-      state.tecValue.countSteps = payload.countSteps;
-    },
-    setAuthType(state, payload) {
-      state.authType = payload.type;
+    // getInstArr(state) {
+    //   return state.instArr;
+    // },
+    // setInstArr(state, payload) {
+    //   state.instArr.push(payload);
+    // },
+    // setNewStep(state, payload) {
+    //   state.instArr[payload.index].step.push(payload.content);
+    // },
+    // setTecValue(state, payload) {
+    //   state.tecValue.id = payload.id;
+    //   state.tecValue.title = payload.title;
+    //   state.tecValue.description = payload.description;
+    //   state.tecValue.countSteps = payload.countSteps;
+    // },
+    // setAuthType(state, payload) {
+    //   state.authType = payload.type;
+    // }
+    createInstruction(state, instruction) {
+      state.instructions.push(instruction);
+
+      localStorage.setItem('instructions', JSON.stringify(state.instructions))
     }
   },
   actions: {
+    createInstruction({ commit }, instruction) {
+      commit('createInstruction', instruction)
+    }
   },
   getters: {
     instructions: state => state.instructions
