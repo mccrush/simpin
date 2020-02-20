@@ -7,7 +7,7 @@
         <div class="form-group">
           <label for="title">Название инструкции</label>
           <input type="text" class="form-control" id="title" v-model="title" maxlength="128" required placeholder="Обязательное поле" />
-          <small class="form-text text-muted text-right">{{title.length}}/128</small>
+          <small class="form-text text-muted text-right">{{title.length}}/64</small>
         </div>
         <div class="form-group">
           <label for="description">Краткое описание</label>
@@ -17,6 +17,7 @@
         <div class="form-group">
           <label for="steps">Количество шагов</label>
           <input type="number" class="form-control" id="steps" v-model.number="steps" min="1" max="32" step="1" />
+          <small class="form-text text-muted text-right">{{steps}}/32</small>
         </div>
         <button type="submit" class="btn btn-block btn-light" :class="{disabled: !title.length}">Создать</button>
       </form>
