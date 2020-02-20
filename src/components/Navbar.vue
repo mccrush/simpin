@@ -8,19 +8,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <router-link to="/" tag="li" class="nav-item">
-          <a class="nav-link" href="#">Список</a>
+          <a class="nav-link" href="#">Инструкции</a>
         </router-link>
 
-        <router-link to="/create" tag="li" class="nav-item">
-          <a class="nav-link" href="#">Создать</a>
-        </router-link>
         <router-link to="/about" tag="li" class="nav-item">
           <a class="nav-link" href="#">О приложении</a>
         </router-link>
-        <router-link to="/login" tag="li" class="nav-item">
-          <a class="nav-link" href="#">Вход</a>
-        </router-link>
       </ul>
+      <router-link to="/login" class="nav-link btn btn-sm btn-light border text-muted">Вход</router-link>
       <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
