@@ -67,7 +67,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    instructions: state => state.instructions
+    instructions: state => state.instructions,
+    instructionById: state => id => state.instructions.find(instruction => instruction.id === id)
   },
   modules: {
   }
