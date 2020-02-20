@@ -10,7 +10,15 @@
       <h5>{{instruction.steps[currentstep].title}}</h5>
       <hr />
       <p>{{instruction.steps[currentstep].description}}</p>
-      <button class="btn btn-block btn-light" @click="currentstep++">Далее</button>
+
+      <div class="row">
+        <div class="col-6">
+          <button class="btn btn-block btn-light" @click="currentstep--">Назад</button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-block btn-light" @click="currentstep++">Далее</button>
+        </div>
+      </div>
     </div>
     <div v-else class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5 class="text-center">Инструкция не найдена</h5>
@@ -34,7 +42,7 @@ export default {
   },
   watch: {
     currentstep(val) {
-      if (val === this.instruction.countsteps) {
+      if (val === this.instruction.countsteps || val === -1) {
         this.currentstep = null;
       }
     }
