@@ -1,17 +1,13 @@
 <template>
   <div class="row justify-content-sm-center">
-    <ListInst />
+    <h1>Список инструкций</h1>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ListInst from "@/_components/ListInst.vue";
 
 export default {
-  name: "home",
-  components: {
-    ListInst
-  }
+  name: "list"
 };
 </script>

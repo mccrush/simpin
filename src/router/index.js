@@ -1,47 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { auth } from "@/main.js";
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Create from '../views/Create.vue'
-import Show from '../views/Show.vue'
-import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: Home
-  // },
+  {
+    path: '/',
+    name: 'list',
+    component: () => import('../views/List.vue')
+  },
   {
     path: '/about',
     name: 'about',
-    component: About
+    component: () => import('../views/About.vue')
   },
   {
     path: '/login',
     name: 'login',
-    component: Login
+    component: () => import('../views/Login.vue')
   },
   {
-    path: '/create/:id',
+    path: '/create',
     name: 'create',
-    component: Create,
-    props: true
+    component: () => import('../views/Create.vue'),
     // meta: {
     //   requiresAuth: true
     // }
   },
   {
-    path: '/create',
-    redirect: '/create/new'
+    path: '/edit/:id',
+    name: 'edit',
+    component: () => import('../views/Edit.vue'),
+    // meta: {
+    //   requiresAuth: true
+    // }
   },
   {
-    path: '/show/:id',
-    name: 'show',
-    component: Show
+    path: '/instruction/:id',
+    name: 'instruction',
+    component: () => import('../views/Instruction.vue')
   }
 ]
 
