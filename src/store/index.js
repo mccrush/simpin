@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    instructions: JSON.parse(localStorage.getItem('instructions') || '[]'),
     instArr: [
       {
         id: '1234556574',

@@ -1,9 +1,9 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-12 col-sm-8 col-md-6 col-xl-4 text-left">
-      <h5 v-if="this.$store.state.authType == 'login'" class="mt-2 text-left">Вход</h5>
-      <h5 v-if="this.$store.state.authType == 'signin'" class="mt-2 text-left">Регистрация</h5>
-      <h5 v-if="this.$store.state.authType == 'restor'" class="mt-2 text-left">Восстановление пароля</h5>
+      <h5 v-if="this.$store.state.authType == 'login'">Вход</h5>
+      <h5 v-if="this.$store.state.authType == 'signin'">Регистрация</h5>
+      <h5 v-if="this.$store.state.authType == 'restor'">Восстановление пароля</h5>
       <hr />
       <label for="email">Email</label>
       <br />
@@ -13,9 +13,9 @@
       <input v-if="this.$store.state.authType !== 'restor'" type="password" class="form-control" id="password" v-model="password" />
       <br />
 
-      <button v-if="this.$store.state.authType == 'login'" class="btn btn-success btn-block" @click="login">Войти</button>
-      <button v-if="this.$store.state.authType == 'signin'" class="btn btn-success btn-block" @click="signin">Зарегистрироваться</button>
-      <button v-if="this.$store.state.authType == 'restor'" class="btn btn-success btn-block" @click="restor">Восстановить пароль</button>
+      <button v-if="this.$store.state.authType == 'login'" class="btn btn-light btn-block" @click="login">Войти</button>
+      <button v-if="this.$store.state.authType == 'signin'" class="btn btn-light btn-block" @click="signin">Зарегистрироваться</button>
+      <button v-if="this.$store.state.authType == 'restor'" class="btn btn-light btn-block" @click="restor">Восстановить пароль</button>
 
       <p class="text-center mt-2 text-small">
         <button v-if="this.$store.state.authType !== 'login'" class="btn btn-link d-inline" type="button" @click="showLoginForm">Вход</button>
