@@ -17,14 +17,12 @@
           <textarea class="form-control" id="description" rows="3" v-model="description" placeholder="Не обязательно" maxlength="256"></textarea>
           <small class="form-text text-muted text-right">{{description.length}}/256</small>
         </div>
-        <div class="row mt-2 mb-2">
-          <div class="col-6">
-            <button type="button" class="btn btn-block btn-light border" @click="currentstep--">Назад</button>
-          </div>
-          <div class="col-6">
-            <button type="submit" class="btn btn-block btn-success">Далее</button>
-          </div>
+
+        <div class="btn-group btn-block" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-light border" @click="currentstep--">Назад</button>
+          <button type="submit" class="btn btn-success">Далее</button>
         </div>
+
         <router-link :to="'/edit/'+ this.$route.params.id" class="btn btn-block btn-light border">Отмена</router-link>
       </form>
     </div>

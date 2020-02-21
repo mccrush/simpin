@@ -10,23 +10,19 @@
         <i class="fas fa-user ml-2 mr-1"></i>mail@mail.ru
       </p>-->
       <p>{{instruction.description}}</p>
-      <button class="btn btn-block btn-success" @click="currentstep = 0" title="Запустить инструкцию">
-        <i class="fas fa-play"></i>
-      </button>
 
-      <!-- Кнопки ниже отображать лишь при условии авторизации,
-      и лишь на тех инструкциях, автором которых является пользователь-->
-      <div class="row mt-2 mb-2">
-        <div class="col-4">
-          <button class="btn btn-block btn-secondary" @click="removeInstruction" title="Удалить инструкцию">
-            <i class="far fa-trash-alt"></i>
-          </button>
-        </div>
-        <div class="col-8">
-          <router-link :to="'/edit/'+instruction.id" class="btn btn-block btn-light border" title="Редактировать инструкцию">
-            <i class="far fa-edit"></i>
-          </router-link>
-        </div>
+      <div class="btn-group btn-block" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" @click="removeInstruction" title="Удалить инструкцию">
+          <i class="far fa-trash-alt"></i>
+        </button>
+
+        <router-link :to="'/edit/'+instruction.id" type="button" class="btn btn-light border" title="Редактировать инструкцию">
+          <i class="far fa-edit"></i>
+        </router-link>
+
+        <button type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
+          <i class="fas fa-play"></i>
+        </button>
       </div>
 
       <router-link to="/" class="btn btn-block btn-light border">К списку инструкций</router-link>
@@ -39,13 +35,9 @@
       <hr />
       <p>{{instruction.steps[currentstep].description}}</p>
 
-      <div class="row">
-        <div class="col-6">
-          <button class="btn btn-block btn-light border" @click="currentstep--">Назад</button>
-        </div>
-        <div class="col-6">
-          <button class="btn btn-block btn-light border" @click="currentstep++">Далее</button>
-        </div>
+      <div class="btn-group btn-block" role="group" aria-label="Basic example">
+        <button class="btn btn-light border" @click="currentstep--">Назад</button>
+        <button class="btn btn-success" @click="currentstep++">Далее</button>
       </div>
 
       <!-- <div class="row" v-if="this.currentstep+1 === this.instruction.countsteps">
