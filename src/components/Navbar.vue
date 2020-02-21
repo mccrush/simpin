@@ -15,14 +15,37 @@
           <a class="nav-link" href="#">О приложении</a>
         </router-link>
       </ul>
-      <router-link to="/login" class="nav-link btn btn-sm btn-light border text-muted" title="Войти">
+      <button v-if="user" class="nav-link btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+      <router-link v-else to="/login" class="nav-link btn btn-sm btn-light border text-muted" title="Войти">
         <i class="fas fa-sign-in-alt"></i>
       </router-link>
-      <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>-->
     </div>
   </nav>
 </template>
+
+<script>
+import { auth } from "@/main.js";
+
+export default {
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    }
+  },
+  methods: {
+    logOut() {
+      auth
+        .signOut()
+        .then(() => {
+          this.$store.dispatch("logOut");
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    }
+  }
+};
+</script>
 

@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { auth } from "@/main.js";
 
 Vue.use(Vuex)
 
+
 export default new Vuex.Store({
   state: {
-    instructions: JSON.parse(localStorage.getItem('instructions') || '[]')
+    instructions: JSON.parse(localStorage.getItem('instructions') || '[]'),
+    user: null
   },
   mutations: {
     createInstruction(state, instruction) {
@@ -52,6 +55,12 @@ export default new Vuex.Store({
 
       state.instructions = instructions;
       localStorage.setItem('instructions', JSON.stringify(state.instructions));
+    },
+    logOut(state) {
+      state.user = null;
+    },
+    logIn(state) {
+      state.user = auth.currentUser;
     }
   },
   actions: {
@@ -69,11 +78,18 @@ export default new Vuex.Store({
     },
     updateStep({ commit }, { id, steps }) {
       commit('updateStep', { id, steps })
+    },
+    logOut({ commit }) {
+      commit('logOut')
+    },
+    logIn({ commit }) {
+      commit('logIn')
     }
   },
   getters: {
     instructions: state => state.instructions,
-    instructionById: state => id => state.instructions.find(instruction => instruction.id === id)
+    instructionById: state => id => state.instructions.find(instruction => instruction.id === id),
+    user: state => state.user
   },
   modules: {
   }

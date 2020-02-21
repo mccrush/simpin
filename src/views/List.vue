@@ -3,7 +3,7 @@
     <div class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5 class="d-flex justify-content-between">
         <span>Список инструкций</span>
-        <router-link to="/create" class="btn btn-sm btn-light border" title="Создать инструкцию">Создать</router-link>
+        <router-link to="/create" v-if="user" class="btn btn-sm btn-light border" title="Создать инструкцию">Создать</router-link>
       </h5>
       <hr />
 
@@ -45,6 +45,9 @@ export default {
   computed: {
     instructions() {
       return this.$store.getters.instructions;
+    },
+    user() {
+      return this.$store.getters.user;
     },
     filteringInstructions() {
       if (!this.filter) {

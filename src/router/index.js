@@ -55,7 +55,10 @@ const routes = [
   {
     path: '/instruction/:id',
     name: 'instruction',
-    component: () => import('../views/Instruction.vue')
+    component: () => import('../views/Instruction.vue'),
+    // meta: {
+    //   requiresAuth: true
+    // }
   }
 ]
 

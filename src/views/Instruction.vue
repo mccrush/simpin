@@ -12,11 +12,11 @@
       <p>{{instruction.description}}</p>
 
       <div class="btn-group btn-block" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" @click="removeInstruction" title="Удалить инструкцию">
+        <button v-if="user" type="button" class="btn btn-secondary" @click="removeInstruction" title="Удалить инструкцию">
           <i class="far fa-trash-alt"></i>
         </button>
 
-        <router-link :to="'/edit/'+instruction.id" type="button" class="btn btn-light border" title="Редактировать инструкцию">
+        <router-link v-if="user" :to="'/edit/'+instruction.id" type="button" class="btn btn-light border" title="Редактировать инструкцию">
           <i class="far fa-edit"></i>
         </router-link>
 
@@ -88,6 +88,9 @@ export default {
   computed: {
     instruction() {
       return this.$store.getters.instructionById(+this.$route.params.id);
+    },
+    user() {
+      return this.$store.getters.user;
     }
   },
   watch: {

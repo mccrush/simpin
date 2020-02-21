@@ -1,29 +1,27 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-12 col-sm-8 col-md-6 col-xl-4 text-left">
-      <h5 v-if="this.$store.state.authType == 'login'">Вход</h5>
-      <h5 v-if="this.$store.state.authType == 'signin'">Регистрация</h5>
-      <h5 v-if="this.$store.state.authType == 'restor'">Восстановление пароля</h5>
+      <h5 v-if="status === 'auth'">Вход</h5>
+      <h5 v-if="status === 'reg'">Регистрация</h5>
+      <h5 v-if="status === 'restor'">Сброс пароля</h5>
       <hr />
       <label for="email">Email</label>
       <br />
       <input type="text" class="form-control" id="email" v-model="email" />
       <br />
-      <label v-if="this.$store.state.authType !== 'restor'" for="password">Password</label>
-      <input v-if="this.$store.state.authType !== 'restor'" type="password" class="form-control" id="password" v-model="password" />
+      <label v-if="status !== 'restor'" for="password">Password</label>
+      <input v-if="status !== 'restor'" type="password" class="form-control" id="password" v-model="password" />
       <br />
 
-      <button v-if="this.$store.state.authType == 'login'" class="btn btn-light btn-block" @click="login">Войти</button>
-      <button v-if="this.$store.state.authType == 'signin'" class="btn btn-light btn-block" @click="signin">Зарегистрироваться</button>
-      <button v-if="this.$store.state.authType == 'restor'" class="btn btn-light btn-block" @click="restor">Восстановить пароль</button>
+      <button v-if="status === 'auth'" class="btn btn-success btn-block" @click="login">Войти</button>
+      <button v-if="status === 'reg'" class="btn btn-success btn-block" @click="signin">Зарегистрироваться</button>
+      <button v-if="status === 'restor'" class="btn btn-success btn-block" @click="restor">Сбросить пароль</button>
 
-      <p class="text-center mt-2 text-small">
-        <button v-if="this.$store.state.authType !== 'login'" class="btn btn-link d-inline" type="button" @click="showLoginForm">Вход</button>
-        <span v-if="this.$store.state.authType !== 'login'">|</span>
-        <button v-if="this.$store.state.authType !== 'signin'" class="btn btn-link d-inline" type="button" @click="showRegForm">Регистрация</button>
-        <span v-if="this.$store.state.authType !== 'signin' && this.$store.state.authType !== 'restor'">|</span>
-        <button v-if="this.$store.state.authType !== 'restor'" class="btn btn-link d-inline" type="button" @click="showRestorForm">Восстановление пароля</button>
-      </p>
+      <div class="btn-group btn-block" role="group" aria-label="Basic example">
+        <button v-if="status !== 'auth'" class="btn btn-light border" type="button" @click="status = 'auth'">Вход</button>
+        <button v-if="status !== 'reg'" class="btn btn-light border" type="button" @click="status = 'reg'">Регистрация</button>
+        <button v-if="status !== 'restor'" class="btn btn-light border" type="button" @click="status = 'restor'">Сброс пароля</button>
+      </div>
     </div>
   </div>
 </template>
@@ -35,7 +33,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      status: "auth"
     };
   },
   methods: {
@@ -43,8 +42,8 @@ export default {
       auth
         .signInWithEmailAndPassword(this.email, this.password)
         .then(user => {
-          //this.$store.commit("setUser", user.user.uid);
-          this.$router.push("/create/1");
+          this.$store.dispatch("logIn");
+          this.$router.push("/");
         })
         .catch(function(error) {
           var errorCode = error.code;
@@ -52,30 +51,20 @@ export default {
           alert("Login: errors:", errorCode, "& ", errorMessage);
         });
     },
-    // signin() {
-    //   auth
-    //     .createUserWithEmailAndPassword(this.email, this.password)
-    //     .then(() => {
-    //       this.$store.commit("setUser");
-    //       this.$router.push("/about");
-    //     })
-    //     .catch(function(error) {
-    //       var errorCode = error.code;
-    //       var errorMessage = error.message;
-    //       alert("Signin: errors:", errorCode, "& ", errorMessage);
-    //     });
-    // }
-    signin() {},
-    restor() {},
-    showLoginForm() {
-      this.$store.commit("setAuthType", { type: "login" });
+    signin() {
+      auth
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$store.dispatch("logIn");
+          this.$router.push("/");
+        })
+        .catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert("Signin: errors:", errorCode, "& ", errorMessage);
+        });
     },
-    showRegForm() {
-      this.$store.commit("setAuthType", { type: "signin" });
-    },
-    showRestorForm() {
-      this.$store.commit("setAuthType", { type: "restor" });
-    }
+    restor() {}
   }
 };
 </script>

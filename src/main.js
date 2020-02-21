@@ -41,12 +41,15 @@ Vue.config.productionTip = false
 
 let app = "";
 
-firebase.auth().onAuthStateChanged(() => {
+firebase.auth().onAuthStateChanged((user) => {
   if (!app) {
     app = new Vue({
       router,
       store,
       render: function (h) { return h(App) }
     }).$mount('#app')
+  }
+  if (user) {
+    store.dispatch("logIn");
   }
 })
