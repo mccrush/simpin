@@ -15,7 +15,9 @@
           <a class="nav-link" href="#">О приложении</a>
         </router-link>
       </ul>
-      <router-link to="/login" class="nav-link btn btn-sm btn-light border text-muted">Вход</router-link>
+      <router-link to="/login" class="nav-link btn btn-sm btn-light border text-muted" title="Войти">
+        <i class="fas fa-sign-in-alt"></i>
+      </router-link>
       <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

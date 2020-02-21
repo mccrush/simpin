@@ -2,23 +2,30 @@
   <div class="row justify-content-center">
     <div v-if="instruction && currentstep === null" class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5>{{instruction.title}}</h5>
-      <hr class="mb-1" />
+      <hr />
+      <!-- <hr class="mb-1" />
       <p class="small text-muted">
-        <i class="fas fa-eye"></i> 256
-        <i class="fas fa-star ml-2"></i> 4.6/5
+        <i class="far fa-eye mr-1"></i> 256
+        <i class="far fa-star ml-2 mr-1"></i> 4.6/5
         <i class="fas fa-user ml-2 mr-1"></i>mail@mail.ru
-      </p>
+      </p>-->
       <p>{{instruction.description}}</p>
-      <button class="btn btn-block btn-success" @click="currentstep = 0">Запустить инструкцию</button>
+      <button class="btn btn-block btn-success" @click="currentstep = 0" title="Запустить инструкцию">
+        <i class="fas fa-play"></i>
+      </button>
 
       <!-- Кнопки ниже отображать лишь при условии авторизации,
       и лишь на тех инструкциях, автором которых является пользователь-->
       <div class="row mt-2 mb-2">
         <div class="col-4">
-          <button class="btn btn-block btn-secondary" @click="removeInstruction">Удалить</button>
+          <button class="btn btn-block btn-secondary" @click="removeInstruction" title="Удалить инструкцию">
+            <i class="far fa-trash-alt"></i>
+          </button>
         </div>
         <div class="col-8">
-          <router-link :to="'/edit/'+instruction.id" class="btn btn-block btn-light border">Редактировать</router-link>
+          <router-link :to="'/edit/'+instruction.id" class="btn btn-block btn-light border" title="Редактировать инструкцию">
+            <i class="far fa-edit"></i>
+          </router-link>
         </div>
       </div>
 
@@ -78,6 +85,7 @@
 </template>
 
 <script>
+import { tooltip } from "popper.js";
 export default {
   data() {
     return {

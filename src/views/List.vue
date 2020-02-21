@@ -3,19 +3,21 @@
     <div class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5 class="d-flex justify-content-between">
         <span>Список инструкций</span>
-        <router-link to="/create" class="btn btn-sm btn-light border">Создать</router-link>
+        <router-link to="/create" class="btn btn-sm btn-light border" title="Создать инструкцию">Создать</router-link>
       </h5>
       <hr />
 
       <div class="input-group mb-3">
         <input type="search" class="form-control" placeholder="Найти инструкцию" aria-label="Найти инструкцию" v-model="filter" />
         <div class="input-group-append">
-          <button class="btn btn-light border" type="button">Поиск</button>
+          <button class="btn btn-light border" type="button">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </div>
 
       <div v-if="filteringInstructions.length" class="list-group">
-        <router-link v-for="instruction in filteringInstructions" :key="instruction.id" :to="'/instruction/' + instruction.id" class="list-group-item list-group-item-action">{{instruction.title}}</router-link>
+        <InstructionItem v-for="instruction in filteringInstructions" :key="instruction.id" :instruction="instruction" />
       </div>
       <div v-else-if="!filteringInstructions.length && filter !== null" class="list-group">
         <router-link to="/" class="list-group-item list-group-item-action">Инстркуций не найдено</router-link>
@@ -29,9 +31,12 @@
 
 <script>
 // @ is an alias to /src
-
+import InstructionItem from "@/components/InstructionItem";
 export default {
   name: "list",
+  components: {
+    InstructionItem
+  },
   data() {
     return {
       filter: null
