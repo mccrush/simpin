@@ -26,6 +26,12 @@ export default new Vuex.Store({
       state.instructions = instructions;
 
       localStorage.setItem('instructions', JSON.stringify(state.instructions))
+    },
+    removeInstruction(state, id) {
+      const instructions = state.instructions.filter(instruction => instruction.id !== id);
+      // Так же следует удалить каталог с изображениями этой инструкции
+      state.instructions = instructions;
+      localStorage.setItem('instructions', JSON.stringify(state.instructions));
     }
   },
   actions: {
@@ -34,6 +40,9 @@ export default new Vuex.Store({
     },
     createStep({ commit }, { step, id }) {
       commit('createStep', { step, id })
+    },
+    removeInstruction({ commit }, id) {
+      commit('removeInstruction', id)
     }
   },
   getters: {

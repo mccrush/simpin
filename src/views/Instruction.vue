@@ -8,14 +8,14 @@
 
       <!-- Кнопки ниже отображать лишь при условии авторизации,
       и лишь на тех инструкциях, автором которых является пользователь-->
-      <!-- <div class="row mt-2 mb-2">
+      <div class="row mt-2 mb-2">
         <div class="col-4">
-          <button class="btn btn-block btn-secondary">Удалить</button>
+          <button class="btn btn-block btn-secondary" @click="removeInstruction">Удалить</button>
         </div>
         <div class="col-8">
           <router-link :to="'/edit/'+instruction.id" class="btn btn-block btn-light border">Редактировать</router-link>
         </div>
-      </div>-->
+      </div>
 
       <router-link to="/" class="btn btn-block btn-light border">К списку инструкций</router-link>
     </div>
@@ -93,7 +93,13 @@ export default {
     }
   },
   methods: {
-    saveRate() {}
+    saveRate() {},
+    removeInstruction() {
+      if (confirm("Точно удалить?")) {
+        this.$store.dispatch("removeInstruction", +this.$route.params.id);
+        this.$router.push("/");
+      }
+    }
   }
 };
 </script>
