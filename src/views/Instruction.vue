@@ -2,7 +2,12 @@
   <div class="row justify-content-center">
     <div v-if="instruction && currentstep === null" class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5>{{instruction.title}}</h5>
-      <hr />
+      <hr class="mb-1" />
+      <p class="small text-muted">
+        <i class="fas fa-eye"></i> 256
+        <i class="fas fa-star ml-2"></i> 4.6/5
+        <i class="fas fa-user ml-2 mr-1"></i>mail@mail.ru
+      </p>
       <p>{{instruction.description}}</p>
       <button class="btn btn-block btn-success" @click="currentstep = 0">Запустить инструкцию</button>
 
