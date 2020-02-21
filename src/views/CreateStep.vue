@@ -11,8 +11,8 @@
         </div>
         <div class="form-group">
           <label for="description">Описание</label>
-          <textarea class="form-control" id="description" rows="3" v-model="description"></textarea>
-          <small class="form-text text-muted text-right">{{description.length}}/1024</small>
+          <textarea class="form-control" id="description" rows="3" v-model="description" maxlength="256" required></textarea>
+          <small class="form-text text-muted text-right">{{description.length}}/256</small>
         </div>
         <button type="submit" class="btn btn-block btn-light" :class="{disabled: !title.length}">Далее</button>
       </form>

@@ -5,6 +5,18 @@
       <hr />
       <p>{{instruction.description}}</p>
       <button class="btn btn-block btn-success" @click="currentstep = 0">Запустить инструкцию</button>
+
+      <!-- Кнопки ниже отображать лишь при условии авторизации,
+      и лишь на тех инструкциях, автором которых является пользователь-->
+      <!-- <div class="row mt-2 mb-2">
+        <div class="col-4">
+          <button class="btn btn-block btn-secondary">Удалить</button>
+        </div>
+        <div class="col-8">
+          <router-link :to="'/edit/'+instruction.id" class="btn btn-block btn-light border">Редактировать</router-link>
+        </div>
+      </div>-->
+
       <router-link to="/" class="btn btn-block btn-light border">К списку инструкций</router-link>
     </div>
     <div v-else-if="instruction && currentstep != null" class="col-12 col-sm-8 col-md-6 col-xl-4">

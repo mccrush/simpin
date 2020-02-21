@@ -11,8 +11,8 @@
         </div>
         <div class="form-group">
           <label for="description">Краткое описание</label>
-          <textarea class="form-control" id="description" rows="3" v-model="description" placeholder="Не обязательно"></textarea>
-          <small class="form-text text-muted text-right">{{description.length}}/1024</small>
+          <textarea class="form-control" id="description" rows="3" v-model="description" placeholder="Не обязательно" maxlength="256"></textarea>
+          <small class="form-text text-muted text-right">{{description.length}}/256</small>
         </div>
         <div class="form-group">
           <label for="countsteps">Количество шагов</label>
