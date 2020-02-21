@@ -8,7 +8,7 @@
       <hr />
 
       <div class="input-group mb-3">
-        <input type="search" class="form-control" placeholder="Найти инструкцию" aria-label="Найти инструкцию" />
+        <input type="search" class="form-control" placeholder="Найти инструкцию" aria-label="Найти инструкцию" v-model="filter" />
         <div class="input-group-append">
           <button class="btn btn-light border" type="button">Поиск</button>
         </div>
@@ -16,6 +16,9 @@
 
       <div v-if="filteringInstructions.length" class="list-group">
         <router-link v-for="instruction in filteringInstructions" :key="instruction.id" :to="'/instruction/' + instruction.id" class="list-group-item list-group-item-action">{{instruction.title}}</router-link>
+      </div>
+      <div v-else-if="!filteringInstructions.length && filter !== null" class="list-group">
+        <router-link to="/" class="list-group-item list-group-item-action">Инстркуций не найдено</router-link>
       </div>
       <div v-else class="list-group">
         <router-link to="/create" class="list-group-item list-group-item-action">Создать первую инструкцию</router-link>
@@ -41,6 +44,17 @@ export default {
     filteringInstructions() {
       if (!this.filter) {
         return this.instructions;
+      }
+      if (this.filter) {
+        return this.$store.getters.instructions.filter(
+          instruction =>
+            instruction.title
+              .toUpperCase()
+              .indexOf(this.filter.toUpperCase()) != -1 ||
+            instruction.description
+              .toUpperCase()
+              .indexOf(this.filter.toUpperCase()) != -1
+        );
       }
     }
   }
