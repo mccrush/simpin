@@ -1,7 +1,10 @@
 <template>
   <div class="create row justify-content-sm-center">
     <div class="col-12 col-sm-8 col-md-6 col-xl-4">
-      <h5>Создание шага {{currentstep}} из {{instruction.countsteps}}</h5>
+      <h5 class="d-flex justify-content-between">
+        <span>Создание шага</span>
+        <span class="text-muted small mt-1">{{currentstep}}/{{instruction.countsteps}}</span>
+      </h5>
       <hr />
       <form @submit.prevent="addStep">
         <div class="form-group">
@@ -14,7 +17,7 @@
           <textarea class="form-control" id="description" rows="3" v-model="description" maxlength="256" required></textarea>
           <small class="form-text text-muted text-right">{{description.length}}/256</small>
         </div>
-        <button type="submit" class="btn btn-block btn-light" :class="{disabled: !title.length}">Далее</button>
+        <button type="submit" class="btn btn-block btn-success" :class="{disabled: !title.length}">Далее</button>
       </form>
     </div>
   </div>
@@ -51,7 +54,7 @@ export default {
           id: +this.$route.params.id
         });
         if (this.currentstep === this.instruction.countsteps) {
-          this.$router.push("/");
+          this.$router.push("/instruction/" + this.$route.params.id);
         }
         this.title = "";
         this.description = "";

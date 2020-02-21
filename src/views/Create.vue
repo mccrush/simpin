@@ -19,7 +19,7 @@
           <input type="number" class="form-control" id="countsteps" v-model.number="countsteps" min="1" max="32" step="1" />
           <small class="form-text text-muted text-right">{{countsteps}}/32</small>
         </div>
-        <button type="submit" class="btn btn-block btn-light" :class="{disabled: !title.length}">Далее</button>
+        <button type="submit" class="btn btn-block btn-success" :class="{disabled: !title.length}">Далее</button>
       </form>
     </div>
   </div>

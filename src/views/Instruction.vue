@@ -22,7 +22,7 @@
     <div v-else-if="instruction && currentstep != null" class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5 class="d-flex justify-content-between">
         <span>{{instruction.steps[currentstep].title}}</span>
-        <span class="text-muted small mt-1">{{currentstep + 1}}/{{this.instruction.countsteps}}</span>
+        <span class="text-muted small mt-1">{{currentstep + 1}}/{{instruction.countsteps}}</span>
       </h5>
       <hr />
       <p>{{instruction.steps[currentstep].description}}</p>
@@ -95,7 +95,11 @@ export default {
   methods: {
     saveRate() {},
     removeInstruction() {
-      if (confirm("Точно удалить?")) {
+      if (
+        confirm("Вы точно хотите удалить инструкцию?") &&
+        confirm("Вы хорошо подумали?") &&
+        confirm("Вы понимаете, что ее невозможно будет восстановить?")
+      ) {
         this.$store.dispatch("removeInstruction", +this.$route.params.id);
         this.$router.push("/");
       }

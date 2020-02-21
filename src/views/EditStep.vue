@@ -3,7 +3,7 @@
     <div v-if="instruction" class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5 class="d-flex justify-content-between">
         <span>Редактирование шагов</span>
-        <span class="text-muted small mt-1">{{currentstep + 1}}/{{this.instruction.countsteps}}</span>
+        <span class="text-muted small mt-1">{{currentstep + 1}}/{{instruction.countsteps}}</span>
       </h5>
       <hr />
       <form @submit.prevent="updateStep">
