@@ -6,8 +6,8 @@
       <form @submit.prevent="addInstruction">
         <div class="form-group">
           <label for="title">Название инструкции</label>
-          <input type="text" class="form-control" id="title" v-model="title" maxlength="128" required placeholder="Обязательное поле" />
-          <small class="form-text text-muted text-right">{{title.length}}/64</small>
+          <input type="text" class="form-control" id="title" v-model="title" maxlength="32" required placeholder="Обязательное поле" />
+          <small class="form-text text-muted text-right">{{title.length}}/32</small>
         </div>
         <div class="form-group">
           <label for="description">Краткое описание</label>

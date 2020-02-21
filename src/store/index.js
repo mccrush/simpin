@@ -42,6 +42,16 @@ export default new Vuex.Store({
 
       state.instructions = instructions;
       localStorage.setItem('instructions', JSON.stringify(state.instructions));
+    },
+    updateStep(state, { id, steps }) {
+      const instructions = state.instructions.concat();
+      const index = instructions.findIndex(instruction => instruction.id === id)
+
+      const instruction = instructions[index];
+      instructions[index] = { ...instruction, steps }
+
+      state.instructions = instructions;
+      localStorage.setItem('instructions', JSON.stringify(state.instructions));
     }
   },
   actions: {
@@ -56,6 +66,9 @@ export default new Vuex.Store({
     },
     updateInstruction({ commit }, { id, title, description }) {
       commit('updateInstruction', { id, title, description })
+    },
+    updateStep({ commit }, { id, steps }) {
+      commit('updateStep', { id, steps })
     }
   },
   getters: {

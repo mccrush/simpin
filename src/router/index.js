@@ -45,6 +45,14 @@ const routes = [
     // }
   },
   {
+    path: '/editstep/:id',
+    name: 'editstep',
+    component: () => import('../views/EditStep.vue'),
+    // meta: {
+    //   requiresAuth: true
+    // }
+  },
+  {
     path: '/instruction/:id',
     name: 'instruction',
     component: () => import('../views/Instruction.vue')
