@@ -50,13 +50,28 @@ export default new Vuex.Store({
       instructions[index] = { ...instruction, steps }
       state.instructions = instructions;
 
-      localStorage.setItem('instructions', JSON.stringify(state.instructions))
+      // db.collection('instructions')
+      //   .doc(instruction.id)
+      //   .set(instruction)
+      //   .then(() => { console.log("Document successfully written!"); })
+      //   .catch(err => { console.error("Error writing document: ", err) });
+
+      db.collection('instructions')
+        .doc(id)
+        .update({ steps })
+        .then(() => { console.log("Document successfully updated!"); })
+        .catch(error => { console.error("Error updating document: ", error); });
+
+      //localStorage.setItem('instructions', JSON.stringify(state.instructions))
     },
     removeInstruction(state, id) {
       const instructions = state.instructions.filter(instruction => instruction.id !== id);
       // Так же следует удалить каталог с изображениями этой инструкции
       state.instructions = instructions;
-      localStorage.setItem('instructions', JSON.stringify(state.instructions));
+
+
+
+      // localStorage.setItem('instructions', JSON.stringify(state.instructions));
     },
     updateInstruction(state, { id, title, description }) {
       const instructions = state.instructions.concat();
@@ -66,7 +81,14 @@ export default new Vuex.Store({
       instructions[index] = { ...instruction, title, description }
 
       state.instructions = instructions;
-      localStorage.setItem('instructions', JSON.stringify(state.instructions));
+
+      db.collection('instructions')
+        .doc(id)
+        .update({ title, description })
+        .then(() => { console.log("Document successfully updated!"); })
+        .catch(error => { console.error("Error updating document: ", error); });
+
+      //localStorage.setItem('instructions', JSON.stringify(state.instructions));
     },
     updateStep(state, { id, steps }) {
       const instructions = state.instructions.concat();
@@ -76,7 +98,14 @@ export default new Vuex.Store({
       instructions[index] = { ...instruction, steps }
 
       state.instructions = instructions;
-      localStorage.setItem('instructions', JSON.stringify(state.instructions));
+
+      db.collection('instructions')
+        .doc(id)
+        .update({ steps })
+        .then(() => { console.log("Document successfully updated!"); })
+        .catch(error => { console.error("Error updating document: ", error); });
+
+      //localStorage.setItem('instructions', JSON.stringify(state.instructions));
     },
     logOut(state) {
       state.user = null;
