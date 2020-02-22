@@ -24,41 +24,38 @@ const routes = [
     path: '/create',
     name: 'create',
     component: () => import('../views/Create.vue'),
-    // meta: {
-    //   requiresAuth: true
-    // }
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/createstep/:id',
     name: 'createstep',
     component: () => import('../views/CreateStep.vue'),
-    // meta: {
-    //   requiresAuth: true
-    // }
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/edit/:id',
     name: 'edit',
     component: () => import('../views/Edit.vue'),
-    // meta: {
-    //   requiresAuth: true
-    // }
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/editstep/:id',
     name: 'editstep',
     component: () => import('../views/EditStep.vue'),
-    // meta: {
-    //   requiresAuth: true
-    // }
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/instruction/:id',
     name: 'instruction',
     component: () => import('../views/Instruction.vue'),
-    // meta: {
-    //   requiresAuth: true
-    // }
   }
 ]
 
