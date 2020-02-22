@@ -50,11 +50,16 @@ export default {
     },
     addInstruction() {
       if (this.title.trim()) {
+        let steps = [];
+        for (let i = 1; i <= this.countsteps; i++) {
+          steps.push({ title: "Шаг " + i, description: "", step: i });
+        }
+
         const instruction = {
           title: this.title,
           description: this.description,
           countsteps: this.countsteps,
-          steps: [],
+          steps,
           id: this.getRandomInt(100, 999) + Date.now().toString(),
           status: "active",
           date: new Date(),
