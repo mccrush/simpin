@@ -7,11 +7,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <router-link to="/" tag="li" class="nav-item">
+        <router-link to="/" tag="li" class="nav-item" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
           <a class="nav-link" href="#">Инструкции</a>
         </router-link>
 
-        <router-link to="/about" tag="li" class="nav-item">
+        <router-link to="/about" tag="li" class="nav-item" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
           <a class="nav-link" href="#">О приложении</a>
         </router-link>
       </ul>
