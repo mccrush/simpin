@@ -37,7 +37,11 @@ export default {
       countsteps: 1
     };
   },
-  created() {},
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    }
+  },
   methods: {
     getRandomInt(min, max) {
       min = Math.ceil(min);
@@ -53,7 +57,8 @@ export default {
           steps: [],
           id: this.getRandomInt(100, 999) + Date.now().toString(),
           status: "active",
-          date: new Date()
+          date: new Date(),
+          user: this.user.uid
         };
 
         this.$store.dispatch("createInstruction", instruction);
