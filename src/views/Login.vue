@@ -20,7 +20,7 @@
       <div class="btn-group btn-block" role="group" aria-label="Basic example">
         <button v-if="status !== 'auth'" class="btn btn-light border" type="button" @click="status = 'auth'">Вход</button>
         <button v-if="status !== 'reg'" class="btn btn-light border" type="button" @click="status = 'reg'">Регистрация</button>
-        <button v-if="status !== 'restor'" class="btn btn-light border" type="button" @click="status = 'restor'">Сброс пароля</button>
+        <button v-if="status !== 'restor'" class="btn btn-light border disabled" type="button">Сброс пароля</button>
       </div>
     </div>
   </div>
