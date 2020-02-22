@@ -18,17 +18,15 @@
         <router-link v-if="user.uid === instruction.user" :to="'/edit/'+instruction.id" type="button" class="btn btn-light border" title="Редактировать инструкцию">
           <i class="far fa-edit"></i>
         </router-link>
-        <button v-if="instruction.steps.length" type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
+        <button type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
           <i class="fas fa-play"></i>
         </button>
-        <button v-else type="button" class="btn btn-light border disabled" title="У инструкции нет шагов">Шагов нет</button>
       </div>
 
       <div v-else class="btn-group btn-block" role="group" aria-label="Basic example">
-        <button v-if="instruction.steps.length" type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
+        <button type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
           <i class="fas fa-play"></i>
         </button>
-        <button v-else type="button" class="btn btn-light border disabled" title="У инструкции нет шагов">У инструкции нет шагов</button>
       </div>
 
       <router-link to="/" class="btn btn-block btn-light border">К списку инструкций</router-link>
