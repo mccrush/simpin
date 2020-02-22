@@ -23,7 +23,7 @@
         <router-link to="/" class="list-group-item list-group-item-action disabled">Инстркуций не найдено</router-link>
       </div>
       <div v-else class="list-group">
-        <router-link to="/create" class="list-group-item list-group-item-action">Создать первую инструкцию</router-link>
+        <router-link v-if="user" to="/create" class="list-group-item list-group-item-action">Создать первую инструкцию</router-link>
       </div>
     </div>
   </div>

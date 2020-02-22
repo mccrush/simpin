@@ -15,10 +15,10 @@
           <a class="nav-link" href="#">О приложении</a>
         </router-link>
       </ul>
-      <button v-if="user" class="nav-link btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut">
+      <button v-if="user" class="nav-link btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
         <i class="fas fa-sign-out-alt"></i>
       </button>
-      <router-link v-else to="/login" class="nav-link btn btn-sm btn-light border text-muted" title="Войти">
+      <router-link v-else to="/login" tag="button" class="nav-link btn btn-sm btn-light border text-muted" title="Войти" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
         <i class="fas fa-sign-in-alt"></i>
       </router-link>
     </div>
