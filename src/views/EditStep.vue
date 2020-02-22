@@ -78,7 +78,7 @@ export default {
         };
 
         this.$store.dispatch("updateStep", {
-          id: +this.$route.params.id,
+          id: this.$route.params.id,
           steps: this.steps
         });
 
