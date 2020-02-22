@@ -39,6 +39,8 @@ Vue.config.productionTip = false
 //   render: function (h) { return h(App) }
 // }).$mount('#app')
 
+store.dispatch("getInstructions");
+
 let app = "";
 
 firebase.auth().onAuthStateChanged((user) => {

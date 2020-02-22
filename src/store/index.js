@@ -1,20 +1,42 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { auth } from "@/main.js";
+import { db } from "@/main.js";
 
 Vue.use(Vuex)
 
 
 export default new Vuex.Store({
   state: {
-    instructions: JSON.parse(localStorage.getItem('instructions') || '[]'),
+    instructions: [],
+    //instructions: JSON.parse(localStorage.getItem('instructions') || '[]'),
     user: null
   },
   mutations: {
+    getInstructions(state) {
+      db.collection('instructions').get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            state.instructions.push(doc.data());
+            //console.log(doc.id, '=>', doc.data());
+          });
+        })
+        .catch((err) => {
+          console.log('Error getting documents', err);
+        });
+    },
     createInstruction(state, instruction) {
       state.instructions.push(instruction);
 
-      localStorage.setItem('instructions', JSON.stringify(state.instructions))
+      db.collection('instructions')
+        .doc(instruction.id)
+        .set(instruction)
+        .then(() => { console.log("Document successfully written!"); })
+        .catch(err => { console.error("Error writing document: ", err) });
+      //let setAda = docRef.set(instruction);
+
+
+      //localStorage.setItem('instructions', JSON.stringify(state.instructions))
     },
     createStep(state, { step, id }) {
       const instructions = state.instructions.concat();
@@ -64,6 +86,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    getInstructions({ commit }) {
+      commit('getInstructions')
+    },
     createInstruction({ commit }, instruction) {
       commit('createInstruction', instruction)
     },
