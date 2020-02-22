@@ -39,6 +39,11 @@ export default {
   },
   created() {},
   methods: {
+    getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    },
     addInstruction() {
       if (this.title.trim()) {
         const instruction = {
@@ -46,7 +51,7 @@ export default {
           description: this.description,
           countsteps: this.countsteps,
           steps: [],
-          id: Date.now(),
+          id: this.getRandomInt(100, 999) + Date.now().toString(),
           status: "active",
           date: new Date()
         };

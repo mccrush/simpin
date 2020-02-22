@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     instruction() {
-      return this.$store.getters.instructionById(+this.$route.params.id);
+      return this.$store.getters.instructionById(this.$route.params.id);
     }
   },
   methods: {
@@ -51,7 +51,7 @@ export default {
 
         this.$store.dispatch("createStep", {
           step,
-          id: +this.$route.params.id
+          id: this.$route.params.id
         });
         if (this.currentstep === this.instruction.countsteps) {
           this.$router.push("/instruction/" + this.$route.params.id);

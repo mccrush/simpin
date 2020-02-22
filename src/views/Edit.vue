@@ -40,14 +40,14 @@ export default {
   },
   computed: {
     instruction() {
-      return this.$store.getters.instructionById(+this.$route.params.id);
+      return this.$store.getters.instructionById(this.$route.params.id);
     }
   },
   methods: {
     updateInstruction() {
       if (this.title.trim()) {
         this.$store.dispatch("updateInstruction", {
-          id: +this.$route.params.id,
+          id: this.$route.params.id,
           title: this.title,
           description: this.description
         });

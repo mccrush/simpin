@@ -87,7 +87,7 @@ export default {
   },
   computed: {
     instruction() {
-      return this.$store.getters.instructionById(+this.$route.params.id);
+      return this.$store.getters.instructionById(this.$route.params.id);
     },
     user() {
       return this.$store.getters.user;
@@ -108,7 +108,7 @@ export default {
         confirm("Вы хорошо подумали?") &&
         confirm("Вы понимаете, что ее невозможно будет восстановить?")
       ) {
-        this.$store.dispatch("removeInstruction", +this.$route.params.id);
+        this.$store.dispatch("removeInstruction", this.$route.params.id);
         this.$router.push("/");
       }
     }

@@ -50,13 +50,13 @@ export default {
   },
   computed: {
     instruction() {
-      return this.$store.getters.instructionById(+this.$route.params.id);
+      return this.$store.getters.instructionById(this.$route.params.id);
     }
   },
   watch: {
     currentstep(val) {
       if (val === -1 || val === this.instruction.countsteps) {
-        this.$router.push("/edit/" + this.$route.params.id);
+        this.$router.push("/instruction/" + this.$route.params.id);
       } else {
         this.title = this.steps[val].title;
         this.description = this.steps[val].description;

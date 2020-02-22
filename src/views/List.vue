@@ -20,7 +20,7 @@
         <InstructionItem v-for="instruction in filteringInstructions" :key="instruction.id" :instruction="instruction" />
       </div>
       <div v-else-if="!filteringInstructions.length && filter !== null" class="list-group">
-        <router-link to="/" class="list-group-item list-group-item-action">Инстркуций не найдено</router-link>
+        <router-link to="/" class="list-group-item list-group-item-action disabled">Инстркуций не найдено</router-link>
       </div>
       <div v-else class="list-group">
         <router-link to="/create" class="list-group-item list-group-item-action">Создать первую инструкцию</router-link>
