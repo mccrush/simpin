@@ -38,32 +38,24 @@ export default new Vuex.Store({
 
       //localStorage.setItem('instructions', JSON.stringify(state.instructions))
     },
-    createStep(state, { step, id }) {
-      const instructions = state.instructions.concat();
+    // createStep(state, { step, id }) {
+    //   let instructions = state.instructions.concat();
 
-      const index = instructions.findIndex(instruction => instruction.id === id);
-      const instruction = instructions[index];
+    //   const index = instructions.findIndex(instruction => instruction.id === id);
+    //   const instruction = instructions[index];
 
-      const steps = instructions[index].steps;
-      steps.push(step);
+    //   let steps = instructions[index].steps;
+    //   steps.push(step);
 
-      instructions[index] = { ...instruction, steps }
-      state.instructions = instructions;
+    //   instructions[index] = { ...instruction, steps }
+    //   state.instructions = instructions;
 
-      // db.collection('instructions')
-      //   .doc(instruction.id)
-      //   .set(instruction)
-      //   .then(() => { console.log("Document successfully written!"); })
-      //   .catch(err => { console.error("Error writing document: ", err) });
-
-      db.collection('instructions')
-        .doc(id)
-        .update({ steps })
-        .then(() => { console.log("Document successfully updated!"); })
-        .catch(error => { console.error("Error updating document: ", error); });
-
-      //localStorage.setItem('instructions', JSON.stringify(state.instructions))
-    },
+    //   db.collection('instructions')
+    //     .doc(id)
+    //     .update({ steps })
+    //     .then(() => { console.log("Document successfully updated!"); })
+    //     .catch(error => { console.error("Error updating document: ", error); });
+    // },
     removeInstruction(state, id) {
       const instructions = state.instructions.filter(instruction => instruction.id !== id);
       // Так же следует удалить каталог с изображениями этой инструкции
@@ -74,7 +66,7 @@ export default new Vuex.Store({
       // localStorage.setItem('instructions', JSON.stringify(state.instructions));
     },
     updateInstruction(state, { id, title, description }) {
-      const instructions = state.instructions.concat();
+      let instructions = state.instructions.concat();
       const index = instructions.findIndex(instruction => instruction.id === id)
 
       const instruction = instructions[index];
@@ -91,7 +83,7 @@ export default new Vuex.Store({
       //localStorage.setItem('instructions', JSON.stringify(state.instructions));
     },
     updateStep(state, { id, steps }) {
-      const instructions = state.instructions.concat();
+      let instructions = state.instructions.concat();
       const index = instructions.findIndex(instruction => instruction.id === id)
 
       const instruction = instructions[index];
@@ -125,9 +117,9 @@ export default new Vuex.Store({
     createInstruction({ commit }, instruction) {
       commit('createInstruction', instruction)
     },
-    createStep({ commit }, { step, id }) {
-      commit('createStep', { step, id })
-    },
+    // createStep({ commit }, { step, id }) {
+    //   commit('createStep', { step, id })
+    // },
     removeInstruction({ commit }, id) {
       commit('removeInstruction', id)
     },

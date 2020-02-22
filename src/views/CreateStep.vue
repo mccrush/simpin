@@ -32,8 +32,14 @@ export default {
     return {
       title: "",
       description: "",
-      currentstep: 1
+      currentstep: 1,
+      steps: []
     };
+  },
+  mounted() {
+    this.steps = this.instruction.steps;
+    this.title = this.steps[this.currentstep - 1].title;
+    this.description = this.steps[this.currentstep - 1].description;
   },
   computed: {
     instruction() {
@@ -43,22 +49,31 @@ export default {
   methods: {
     addStep() {
       if (this.title.trim()) {
-        const step = {
+        this.steps[this.currentstep - 1] = {
           title: this.title,
           description: this.description,
           step: this.currentstep
         };
 
-        this.$store.dispatch("createStep", {
-          step,
-          id: this.$route.params.id
+        // this.$store.dispatch("createStep", {
+        //   step,
+        //   id: this.$route.params.id
+        // });
+
+        this.$store.dispatch("updateStep", {
+          id: this.$route.params.id,
+          steps: this.steps
         });
-        if (this.currentstep === this.instruction.countsteps) {
+
+        if (this.currentstep < this.instruction.countsteps) {
+          this.currentstep++;
+          this.title = this.steps[this.currentstep - 1].title;
+          this.description = this.steps[this.currentstep - 1].description;
+        } else if (this.currentstep === this.instruction.countsteps) {
           this.$router.push("/instruction/" + this.$route.params.id);
+        } else {
+          console.log("Ошибка при создании шага");
         }
-        this.title = "";
-        this.description = "";
-        this.currentstep++;
       } else {
         alert('Поле "Название шага" обязательно к заполнению!');
       }

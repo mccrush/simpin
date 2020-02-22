@@ -40,7 +40,8 @@ export default {
     return {
       title: "",
       description: "",
-      currentstep: 0
+      currentstep: 0,
+      steps: []
     };
   },
   mounted() {
