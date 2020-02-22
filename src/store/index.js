@@ -111,7 +111,11 @@ export default new Vuex.Store({
       state.user = null;
     },
     logIn(state) {
-      state.user = auth.currentUser;
+      state.user = {
+        uid: auth.currentUser.uid,
+        email: auth.currentUser.email,
+        name: auth.currentUser.name,
+      }
     }
   },
   actions: {
