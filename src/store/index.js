@@ -69,7 +69,7 @@ export default new Vuex.Store({
       // Так же следует удалить каталог с изображениями этой инструкции
       state.instructions = instructions;
 
-
+      db.collection('instructions').doc(id).delete();
 
       // localStorage.setItem('instructions', JSON.stringify(state.instructions));
     },
