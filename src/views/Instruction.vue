@@ -20,7 +20,7 @@
           <i class="far fa-edit"></i>
         </router-link>
 
-        <button type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
+        <button v-if="instruction.steps.length" type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
           <i class="fas fa-play"></i>
         </button>
       </div>

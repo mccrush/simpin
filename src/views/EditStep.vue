@@ -45,8 +45,12 @@ export default {
   },
   mounted() {
     this.steps = this.instruction.steps;
-    this.title = this.steps[this.currentstep].title;
-    this.description = this.steps[this.currentstep].description;
+    this.title = this.steps[this.currentstep]
+      ? this.steps[this.currentstep].title
+      : "";
+    this.description = this.steps[this.currentstep]
+      ? this.steps[this.currentstep].description
+      : "";
   },
   computed: {
     instruction() {
