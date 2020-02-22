@@ -7,18 +7,36 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <router-link to="/" tag="li" class="nav-item" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
+        <router-link to="/" tag="li" class="nav-item d-sm-none" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
           <a class="nav-link" href="#">Инструкции</a>
         </router-link>
 
-        <router-link to="/about" tag="li" class="nav-item" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
+        <router-link to="/" tag="li" class="nav-item d-none d-sm-inline">
+          <a class="nav-link" href="#">Инструкции</a>
+        </router-link>
+
+        <router-link to="/about" tag="li" class="nav-item d-sm-none" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
+          <a class="nav-link" href="#">О приложении</a>
+        </router-link>
+
+        <router-link to="/about" tag="li" class="nav-item d-none d-sm-inline">
           <a class="nav-link" href="#">О приложении</a>
         </router-link>
       </ul>
-      <button v-if="user" class="nav-link btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
+
+      <button v-if="user" class="nav-link d-sm-none btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
         <i class="fas fa-sign-out-alt"></i>
       </button>
-      <router-link v-else to="/login" tag="button" class="nav-link btn btn-sm btn-light border text-muted" title="Войти" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
+
+      <router-link v-else to="/login" tag="button" class="nav-link d-sm-none btn btn-sm btn-light border text-muted" title="Войти" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
+        <i class="fas fa-sign-in-alt"></i>
+      </router-link>
+
+      <button v-if="user" class="nav-link d-none d-sm-inline btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+
+      <router-link v-else to="/login" tag="button" class="nav-link d-none d-sm-inline btn btn-sm btn-light border text-muted" title="Войти">
         <i class="fas fa-sign-in-alt"></i>
       </router-link>
     </div>
