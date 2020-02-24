@@ -11,7 +11,7 @@
       </p>-->
       <div class="row" v-if="instruction.imageurl">
         <div class="col">
-          <img v-if="src" :src="instruction.imageurl" alt="Обложка инструкции" width="100%" class="mb-2" />
+          <img v-if="instruction.imageurl" :src="instruction.imageurl" alt="Обложка инструкции" width="100%" class="mb-2" />
         </div>
       </div>
       <p>{{instruction.description}}</p>
