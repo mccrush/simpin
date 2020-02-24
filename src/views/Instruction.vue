@@ -9,6 +9,11 @@
         <i class="far fa-star ml-2 mr-1"></i> 4.6/5
         <i class="fas fa-user ml-2 mr-1"></i>mail@mail.ru
       </p>-->
+      <div class="row" v-if="instruction.imageurl">
+        <div class="col">
+          <img v-if="src" :src="instruction.imageurl" alt="Обложка инструкции" width="100%" class="mb-2" />
+        </div>
+      </div>
       <p>{{instruction.description}}</p>
 
       <div v-if="user" class="btn-group btn-block" role="group" aria-label="Basic example">

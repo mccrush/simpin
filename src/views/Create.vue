@@ -90,7 +90,7 @@ export default {
           steps.push({ title: "Шаг " + i, description: "", step: i });
         }
 
-        const instruction = {
+        let instruction = {
           title: this.title,
           description: this.description,
           countsteps: this.countsteps,
@@ -99,10 +99,11 @@ export default {
           status: "active",
           date: new Date(),
           user: this.user.uid,
-          imageurl: this.imageurl
+          imageurl: ""
         };
 
         this.uploadFile(instruction.id).then(() => {
+          instruction.imageurl = this.imageurl;
           this.$store.dispatch("createInstruction", instruction);
           this.$router.push("/createstep/" + instruction.id);
         });
