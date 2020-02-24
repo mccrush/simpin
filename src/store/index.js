@@ -38,24 +38,6 @@ export default new Vuex.Store({
 
       //localStorage.setItem('instructions', JSON.stringify(state.instructions))
     },
-    // createStep(state, { step, id }) {
-    //   let instructions = state.instructions.concat();
-
-    //   const index = instructions.findIndex(instruction => instruction.id === id);
-    //   const instruction = instructions[index];
-
-    //   let steps = instructions[index].steps;
-    //   steps.push(step);
-
-    //   instructions[index] = { ...instruction, steps }
-    //   state.instructions = instructions;
-
-    //   db.collection('instructions')
-    //     .doc(id)
-    //     .update({ steps })
-    //     .then(() => { console.log("Document successfully updated!"); })
-    //     .catch(error => { console.error("Error updating document: ", error); });
-    // },
     removeInstruction(state, id) {
       const instructions = state.instructions.filter(instruction => instruction.id !== id);
       // Так же следует удалить каталог с изображениями этой инструкции
@@ -117,9 +99,6 @@ export default new Vuex.Store({
     createInstruction({ commit }, instruction) {
       commit('createInstruction', instruction)
     },
-    // createStep({ commit }, { step, id }) {
-    //   commit('createStep', { step, id })
-    // },
     removeInstruction({ commit }, id) {
       commit('removeInstruction', id)
     },
