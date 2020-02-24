@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { auth } from "@/main.js";
 import { db } from "@/main.js";
+import { storage } from "@/main.js";
+
 
 Vue.use(Vuex)
 
