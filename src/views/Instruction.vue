@@ -12,15 +12,9 @@
       <p>{{instruction.description}}</p>
 
       <div v-if="user" class="btn-group btn-block" role="group" aria-label="Basic example">
-        <button v-if="user.uid === instruction.user" type="button" class="btn btn-secondary" @click="removeInstruction" title="Удалить инструкцию">
-          <i class="far fa-trash-alt"></i>
-        </button>
-        <router-link v-if="user.uid === instruction.user" :to="'/edit/'+instruction.id" type="button" class="btn btn-light border" title="Редактировать инструкцию">
-          <i class="far fa-edit"></i>
-        </router-link>
-        <button type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
-          <i class="fas fa-play"></i>
-        </button>
+        <button v-if="user.uid === instruction.user" type="button" class="btn btn-secondary" @click="removeInstruction" title="Удалить инструкцию">Удалить</button>
+        <router-link v-if="user.uid === instruction.user" :to="'/edit/'+instruction.id" type="button" class="btn btn-light border" title="Редактировать инструкцию">Редактировать</router-link>
+        <button type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">Запустить</button>
       </div>
 
       <div v-else class="btn-group btn-block" role="group" aria-label="Basic example">

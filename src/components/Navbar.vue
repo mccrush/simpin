@@ -24,21 +24,13 @@
         </router-link>
       </ul>
 
-      <button v-if="user" class="nav-link d-sm-none btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
-        <i class="fas fa-sign-out-alt"></i>
-      </button>
+      <button v-if="user" class="nav-link d-sm-none btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">Выйти</button>
 
-      <router-link v-else to="/login" tag="button" class="nav-link d-sm-none btn btn-sm btn-light border text-muted" title="Войти" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">
-        <i class="fas fa-sign-in-alt"></i>
-      </router-link>
+      <router-link v-else to="/login" tag="button" class="nav-link d-sm-none btn btn-sm btn-light border text-muted" title="Войти" data-toggle="collapse" aria-controls="navbarSupportedContent" data-target="#navbarSupportedContent" aria-expanded="false">Войти</router-link>
 
-      <button v-if="user" class="nav-link d-none d-sm-inline btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut">
-        <i class="fas fa-sign-out-alt"></i>
-      </button>
+      <button v-if="user" class="nav-link d-none d-sm-inline btn btn-sm btn-light border text-muted" title="Выйти" @click="logOut">Выйти</button>
 
-      <router-link v-else to="/login" tag="button" class="nav-link d-none d-sm-inline btn btn-sm btn-light border text-muted" title="Войти">
-        <i class="fas fa-sign-in-alt"></i>
-      </router-link>
+      <router-link v-else to="/login" tag="button" class="nav-link d-none d-sm-inline btn btn-sm btn-light border text-muted" title="Войти">Войти</router-link>
     </div>
   </nav>
 </template>

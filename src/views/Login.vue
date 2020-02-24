@@ -37,6 +37,15 @@ export default {
       status: "auth"
     };
   },
+  created() {
+    if (this.$route.query) {
+      if (this.$route.query.status === "reg") {
+        this.status = "reg";
+      }
+    } else {
+      this.status = "auth";
+    }
+  },
   methods: {
     login() {
       auth

@@ -6,7 +6,7 @@
       <p class="text-left">Приложение для создания простых инструкций. Один шаг - одно простое действие. Создавайте и делитесь инструкциями с друзъями.</p>
       <p>
         Для того чтобы создать инструкцию, необходимо
-        <router-link to="/login">зарегистрироваться</router-link>.
+        <router-link to="/login?status=reg">зарегистрироваться</router-link>.
       </p>
       <p class="text-left">По всем вопросам пишите на почту: mccrush2027@gmail.com</p>
       <p class="p-1 text-center bg-dark text-white-50 text-monospace">
