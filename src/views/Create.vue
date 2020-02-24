@@ -1,6 +1,6 @@
 <template>
   <div class="create row justify-content-sm-center">
-    <div class="col-12 col-sm-8 col-md-6 col-xl-4">
+    <div class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5>Создание инструкции</h5>
       <hr />
       <form @submit.prevent="addInstruction">

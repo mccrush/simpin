@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-8 col-md-6 col-xl-4">
+    <div class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5 class="d-flex justify-content-between">
         <span>Список инструкций</span>
         <router-link to="/create" v-if="user" class="btn btn-sm btn-light border" title="Создать инструкцию">Создать</router-link>

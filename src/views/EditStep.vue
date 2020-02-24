@@ -1,6 +1,6 @@
 <template>
   <div class="create row justify-content-sm-center">
-    <div v-if="instruction" class="col-12 col-sm-8 col-md-6 col-xl-4">
+    <div v-if="instruction" class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5 class="d-flex justify-content-between">
         <span>Редактирование шагов</span>
         <span class="text-muted small mt-1">{{currentstep + 1}}/{{instruction.countsteps}}</span>

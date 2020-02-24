@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div v-if="instruction && currentstep === null" class="col-12 col-sm-8 col-md-6 col-xl-4">
+    <div v-if="instruction && currentstep === null" class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5>{{instruction.title}}</h5>
       <hr />
       <!-- <hr class="mb-1" />
@@ -18,14 +18,12 @@
       </div>
 
       <div v-else class="btn-group btn-block" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">
-          <i class="fas fa-play"></i>
-        </button>
+        <button type="button" class="btn btn-success" @click="currentstep = 0" title="Запустить инструкцию">Запустить</button>
       </div>
 
       <router-link to="/" class="btn btn-block btn-light border">К списку инструкций</router-link>
     </div>
-    <div v-else-if="instruction && currentstep != null" class="col-12 col-sm-8 col-md-6 col-xl-4">
+    <div v-else-if="instruction && currentstep != null" class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5 class="d-flex justify-content-between">
         <span>{{instruction.steps[currentstep].title}}</span>
         <span class="text-muted small mt-1">{{currentstep + 1}}/{{instruction.countsteps}}</span>
@@ -41,7 +39,7 @@
     <div v-else class="col-12 col-sm-8 col-md-6 col-xl-4">
       <h5 class="text-center">Инструкция не найдена</h5>
       <hr />
-      <router-link to="/" class="text-center d-block">Вернуться к списку инструкций</router-link>
+      <router-link to="/" class="btn btn-block btn-light border">Вернуться к списку инструкций</router-link>
     </div>
   </div>
 </template>
