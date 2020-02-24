@@ -1,6 +1,12 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-8 col-md-6 col-xl-4 text-left">
+    <div v-if="user" class="col-12 col-sm-8 col-md-6 col-xl-4 text-left">
+      <h5>Вы уже авторизированы</h5>
+      <hr />
+      <button class="nav-link d-sm-inline btn btn-block btn-light border" title="Выйти" @click="logOut">Выйти из аккаунта</button>
+      <router-link to="/" class="btn btn-block btn-light border">К списку инструкций</router-link>
+    </div>
+    <div v-else class="col-12 col-sm-8 col-md-6 col-xl-4 text-left">
       <h5 v-if="status === 'auth'">Вход</h5>
       <h5 v-if="status === 'reg'">Регистрация</h5>
       <h5 v-if="status === 'restor'">Сброс пароля</h5>
@@ -37,6 +43,11 @@ export default {
       status: "auth"
     };
   },
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    }
+  },
   created() {
     if (this.$route.query) {
       if (this.$route.query.status === "reg") {
@@ -71,6 +82,17 @@ export default {
           var errorCode = error.code;
           var errorMessage = error.message;
           alert("Signin: errors:", errorCode, "& ", errorMessage);
+        });
+    },
+    logOut() {
+      auth
+        .signOut()
+        .then(() => {
+          this.$store.dispatch("logOut");
+          this.status = "auth";
+        })
+        .catch(function(error) {
+          console.error(error);
         });
     },
     restor() {}
