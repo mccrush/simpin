@@ -30,9 +30,9 @@
         <span class="text-muted small mt-1">{{currentstep + 1}}/{{instruction.countsteps}}</span>
       </h5>
       <hr />
-      <div class="row" v-if="instruction.imageurl.length">
+      <div class="row" v-if="instruction.steps[currentstep].imageurl">
         <div class="col">
-          <img :src="instruction.imageurl[currentstep]" alt="Обложка инструкции" width="100%" class="mb-2" />
+          <img :src="instruction.steps[currentstep].imageurl" alt="Обложка инструкции" width="100%" class="img-thumbnail mb-2" />
         </div>
       </div>
       <p>{{instruction.steps[currentstep].description}}</p>
@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import { tooltip } from "popper.js";
 export default {
   data() {
     return {

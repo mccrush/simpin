@@ -28,7 +28,6 @@
 
 <script>
 // @ is an alias to /src
-import { storage } from "@/main.js";
 
 export default {
   name: "create",
@@ -52,11 +51,14 @@ export default {
     },
     addInstruction() {
       if (this.title.trim()) {
-        let steps,
-          imageurl = [];
+        let steps = [];
         for (let i = 1; i <= this.countsteps; i++) {
-          steps.push({ title: "Шаг " + i, description: "", step: i });
-          imageurl.push("");
+          steps.push({
+            title: "Шаг " + i,
+            description: "",
+            step: i,
+            imageurl: ""
+          });
         }
 
         let instruction = {
@@ -67,8 +69,7 @@ export default {
           id: this.getRandomInt(100, 999) + Date.now().toString(),
           status: "active",
           date: new Date(),
-          user: this.user.uid,
-          imageurl
+          user: this.user.uid
         };
 
         this.$store.dispatch("createInstruction", instruction);

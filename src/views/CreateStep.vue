@@ -35,6 +35,7 @@
 
 <script>
 // @ is an alias to /src
+import { storage } from "@/main.js";
 
 export default {
   name: "createstep",
@@ -44,13 +45,12 @@ export default {
       description: "",
       currentstep: 1,
       steps: [],
-      imageurl: [],
+      imageurl: "",
       src: ""
     };
   },
   mounted() {
     this.steps = this.instruction.steps;
-    this.imageurl = this.instruction.imageurl;
     this.title = this.steps[this.currentstep - 1].title;
     this.description = this.steps[this.currentstep - 1].description;
   },
@@ -64,7 +64,7 @@ export default {
       let file = this.$refs.file.files[0];
       this.src = URL.createObjectURL(file);
     },
-    async uploadFile(id) {
+    uploadFile(id) {
       let file = this.$refs.file.files[0];
       let fileName = file.name;
 
@@ -72,12 +72,13 @@ export default {
         .ref()
         .child("instructions")
         .child(id)
+        .child(this.currentstep - 1 + "")
         .child(fileName);
 
-      await ref.put(file).then(snapshot => {
+      ref.put(file).then(snapshot => {
         console.log("Uploaded a blob or file!");
         snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.imageurl[this.currentstep - 1] = downloadURL;
+          this.imageurl = downloadURL;
         });
       });
     },
@@ -85,19 +86,22 @@ export default {
       this.steps[this.currentstep - 1] = {
         title: this.title,
         description: this.description,
-        step: this.currentstep
+        step: this.currentstep,
+        imageurl: this.imageurl
       };
 
       this.$store.dispatch("updateStep", {
         id: this.$route.params.id,
-        steps: this.steps,
-        imageurl: this.imageurl
+        steps: this.steps
       });
 
       if (this.currentstep < this.instruction.countsteps) {
         this.currentstep++;
         this.title = this.steps[this.currentstep - 1].title;
         this.description = this.steps[this.currentstep - 1].description;
+        this.src = "";
+        this.$refs.file.value = "";
+        this.imageurl = "";
       } else if (this.currentstep === this.instruction.countsteps) {
         this.$router.push("/instruction/" + this.$route.params.id);
       } else {
@@ -106,12 +110,13 @@ export default {
     },
     addStep() {
       if (this.title.trim()) {
+        console.log(this.src);
         if (this.src) {
           this.uploadFile(this.$route.params.id).then(() => {
-            this.saveStep;
+            this.saveStep();
           });
         } else {
-          this.saveStep;
+          this.saveStep();
         }
       } else {
         alert('Поле "Название шага" обязательно к заполнению!');
