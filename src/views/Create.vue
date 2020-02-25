@@ -9,16 +9,6 @@
           <input type="text" class="form-control" id="title" v-model="title" maxlength="32" required placeholder="Обязательное поле" />
           <small class="form-text text-muted text-right">{{title.length}}/32</small>
         </div>
-        <div class="row">
-          <div class="col">
-            <img v-if="src" :src="src" alt="Обложка инструкции" width="100%" class="img-thumbnail mb-2" />
-          </div>
-        </div>
-        <div class="custom-file mb-4">
-          <input type="file" class="custom-file-input" id="customFile" ref="file" @change="handleFiles" accept="image/*" />
-          <label class="custom-file-label" for="customFile">Загрузить обложку</label>
-        </div>
-        <p>{{imageurl}}</p>
         <div class="form-group">
           <label for="description">Краткое описание</label>
           <textarea class="form-control" id="description" rows="3" v-model="description" placeholder="Не обязательно" maxlength="256"></textarea>
@@ -46,9 +36,7 @@ export default {
     return {
       title: "",
       description: "",
-      countsteps: 1,
-      src: "",
-      imageurl: ""
+      countsteps: 1
     };
   },
   computed: {
@@ -57,27 +45,6 @@ export default {
     }
   },
   methods: {
-    handleFiles() {
-      let file = this.$refs.file.files[0];
-      this.src = URL.createObjectURL(file);
-    },
-    async uploadFile(id) {
-      let file = this.$refs.file.files[0];
-      let fileName = file.name;
-
-      const ref = storage
-        .ref()
-        .child("instructions")
-        .child(id)
-        .child(fileName);
-
-      await ref.put(file).then(snapshot => {
-        console.log("Uploaded a blob or file!");
-        snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.imageurl = downloadURL;
-        });
-      });
-    },
     getRandomInt(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -85,9 +52,11 @@ export default {
     },
     addInstruction() {
       if (this.title.trim()) {
-        let steps = [];
+        let steps,
+          imageurl = [];
         for (let i = 1; i <= this.countsteps; i++) {
           steps.push({ title: "Шаг " + i, description: "", step: i });
+          imageurl.push("");
         }
 
         let instruction = {
@@ -99,14 +68,11 @@ export default {
           status: "active",
           date: new Date(),
           user: this.user.uid,
-          imageurl: ""
+          imageurl
         };
 
-        this.uploadFile(instruction.id).then(() => {
-          instruction.imageurl = this.imageurl;
-          this.$store.dispatch("createInstruction", instruction);
-          this.$router.push("/createstep/" + instruction.id);
-        });
+        this.$store.dispatch("createInstruction", instruction);
+        this.$router.push("/createstep/" + instruction.id);
       } else {
         alert('Поле "Название инструкции" обязательно к заполнению!');
       }

@@ -66,12 +66,12 @@ export default new Vuex.Store({
 
       //localStorage.setItem('instructions', JSON.stringify(state.instructions));
     },
-    updateStep(state, { id, steps }) {
+    updateStep(state, { id, steps, imageurl }) {
       let instructions = state.instructions.concat();
       const index = instructions.findIndex(instruction => instruction.id === id)
 
       const instruction = instructions[index];
-      instructions[index] = { ...instruction, steps }
+      instructions[index] = { ...instruction, steps, imageurl }
 
       state.instructions = instructions;
 
@@ -107,8 +107,8 @@ export default new Vuex.Store({
     updateInstruction({ commit }, { id, title, description }) {
       commit('updateInstruction', { id, title, description })
     },
-    updateStep({ commit }, { id, steps }) {
-      commit('updateStep', { id, steps })
+    updateStep({ commit }, { id, steps, imageurl }) {
+      commit('updateStep', { id, steps, imageurl })
     },
     logOut({ commit }) {
       commit('logOut')
