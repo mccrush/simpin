@@ -12,7 +12,7 @@
           <input type="text" class="form-control" id="title" v-model="title" maxlength="128" required placeholder="Обязательное поле" />
           <small class="form-text text-muted text-right">{{title.length}}/64</small>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col">
             <img v-if="src" :src="src" alt="Иллюстрация шага" width="100%" class="img-thumbnail mb-2" />
           </div>
@@ -21,7 +21,7 @@
           <input type="file" class="custom-file-input" id="customFile" ref="file" @change="handleFiles" accept="image/*" />
           <label class="custom-file-label" for="customFile">Загрузить иллюстрацию</label>
         </div>
-        <p>{{imageurl[currentstep - 1]}}</p>
+        <p>{{imageurl[currentstep - 1]}}</p> -->
         <div class="form-group">
           <label for="description">Описание</label>
           <textarea class="form-control" id="description" rows="3" v-model="description" maxlength="256" required></textarea>
@@ -78,11 +78,13 @@ export default {
       ref.put(file).then(snapshot => {
         console.log("Uploaded a blob or file!");
         snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.imageurl = downloadURL;
+          //this.imageurl = downloadURL;
         });
       });
+      //return "Success!";
     },
     saveStep() {
+      //console.log("this.imageurl:", this.imageurl);
       this.steps[this.currentstep - 1] = {
         title: this.title,
         description: this.description,
@@ -112,9 +114,12 @@ export default {
       if (this.title.trim()) {
         console.log(this.src);
         if (this.src) {
-          this.uploadFile(this.$route.params.id).then(() => {
-            this.saveStep();
+          this.uploadFile(this.$route.params.id).then(msg => {
+            console.log(msg);
+            this.imageurl = msg;
+            console.log("this.imageurl", this.imageurl);
           });
+          //this.saveStep();
         } else {
           this.saveStep();
         }
