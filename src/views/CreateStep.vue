@@ -21,7 +21,7 @@
           <input type="file" class="custom-file-input" id="customFile" ref="file" @change="handleFiles" accept="image/*" />
           <label class="custom-file-label" for="customFile">Загрузить иллюстрацию</label>
         </div>
-        <p>{{imageurl[currentstep - 1]}}</p> -->
+        <p>{{imageurl[currentstep - 1]}}</p>-->
         <div class="form-group">
           <label for="description">Описание</label>
           <textarea class="form-control" id="description" rows="3" v-model="description" maxlength="256" required></textarea>
@@ -102,8 +102,8 @@ export default {
         this.title = this.steps[this.currentstep - 1].title;
         this.description = this.steps[this.currentstep - 1].description;
         this.src = "";
-        this.$refs.file.value = "";
-        this.imageurl = "";
+        //this.$refs.file.value = "";
+        //this.imageurl = "";
       } else if (this.currentstep === this.instruction.countsteps) {
         this.$router.push("/instruction/" + this.$route.params.id);
       } else {
@@ -112,17 +112,18 @@ export default {
     },
     addStep() {
       if (this.title.trim()) {
-        console.log(this.src);
-        if (this.src) {
-          this.uploadFile(this.$route.params.id).then(msg => {
-            console.log(msg);
-            this.imageurl = msg;
-            console.log("this.imageurl", this.imageurl);
-          });
-          //this.saveStep();
-        } else {
-          this.saveStep();
-        }
+        // console.log(this.src);
+        // if (this.src) {
+        //   this.uploadFile(this.$route.params.id).then(msg => {
+        //     console.log(msg);
+        //     this.imageurl = msg;
+        //     console.log("this.imageurl", this.imageurl);
+        //   });
+        //   this.saveStep();
+        // } else {
+        //   this.saveStep();
+        // }
+        this.saveStep();
       } else {
         alert('Поле "Название шага" обязательно к заполнению!');
       }
