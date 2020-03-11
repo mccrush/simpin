@@ -76,11 +76,7 @@ export default {
   methods: {
     saveRate() {},
     removeInstruction() {
-      if (
-        confirm("Вы точно хотите удалить инструкцию?") &&
-        confirm("Вы хорошо подумали?") &&
-        confirm("Вы понимаете, что ее невозможно будет восстановить?")
-      ) {
+      if (confirm("Вы точно хотите удалить инструкцию?")) {
         this.$store.dispatch("removeInstruction", this.$route.params.id);
         this.$router.push("/");
       }
