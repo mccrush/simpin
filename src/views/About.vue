@@ -1,7 +1,10 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-12 col-sm-8 col-md-6 col-xl-6">
-      <h5>О приложении</h5>
+      <h5>
+        О приложении
+        <small>v1.0.2</small>
+      </h5>
       <hr />
       <p class="text-left">Приложение для создания простых инструкций. Один шаг - одно простое действие. Создавайте и делитесь инструкциями с друзьями.</p>
       <p>
