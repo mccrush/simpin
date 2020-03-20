@@ -1,5 +1,6 @@
 <template>
   <div class="row justify-content-center">
+    <vueHeadful :title="instruction.title" :description="instruction.description" />
     <div v-if="instruction && currentstep === null" class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5>{{instruction.title}}</h5>
       <hr />
@@ -51,7 +52,12 @@
 </template>
 
 <script>
+import vueHeadful from "vue-headful";
+
 export default {
+  components: {
+    vueHeadful
+  },
   data() {
     return {
       currentstep: null,
