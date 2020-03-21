@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <vueHeadful title="О приложении" description="Simpin - это приложение для создания простых инструкций" />
+    <vueHeadful title="О приложении Simpin" description="Simpin - это приложение для создания простых инструкций" />
     <div class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5>
         О приложении
