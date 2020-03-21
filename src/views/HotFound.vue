@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row justify-content-center">
     <vueHeadful title="Ошибка 404" description="Запрашиваемая страница не найдена" />
     <div class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5>Ошибка 404</h5>
@@ -13,7 +13,7 @@
 <script>
 import vueHeadful from "vue-headful";
 export default {
-  name: "404",
+  name: "notfound",
   components: {
     vueHeadful
   }

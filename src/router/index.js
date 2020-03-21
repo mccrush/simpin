@@ -59,7 +59,7 @@ const routes = [
   },
   {
     path: '*',
-    name: '404',
+    name: 'notfound',
     component: () => import('../views/HotFound.vue')
   }
 ]
