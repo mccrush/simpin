@@ -55,7 +55,12 @@ const routes = [
   {
     path: '/instruction/:id',
     name: 'instruction',
-    component: () => import('../views/Instruction.vue'),
+    component: () => import('../views/Instruction.vue')
+  },
+  {
+    path: '*',
+    name: '404',
+    component: () => import('../views/HotFound.vue')
   }
 ]
 
