@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
-    <vueHeadful :title="instruction.title" :description="instruction.description" />
     <div v-if="instruction && currentstep === null" class="col-12 col-sm-8 col-md-6 col-xl-6">
+      <vueHeadful :title="instruction.title" :description="instruction.description" />
       <h5>{{instruction.title}}</h5>
       <hr />
       <!-- <hr class="mb-1" />
@@ -43,8 +43,8 @@
         <button class="btn btn-success" @click="currentstep++">Далее</button>
       </div>
     </div>
-    <div v-else class="col-12 col-sm-8 col-md-6 col-xl-4">
-      <h5 class="text-center">Инструкция не найдена</h5>
+    <div v-else class="col-12 col-sm-8 col-md-6 col-xl-4 text-center">
+      <Loader />
       <hr />
       <router-link to="/" class="btn btn-block btn-light border">Вернуться к списку инструкций</router-link>
     </div>
@@ -52,10 +52,12 @@
 </template>
 
 <script>
+import Loader from "@/components/Loader";
 import vueHeadful from "vue-headful";
 
 export default {
   components: {
+    Loader,
     vueHeadful
   },
   data() {
