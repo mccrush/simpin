@@ -1,5 +1,6 @@
 <template>
   <div class="create row justify-content-sm-center">
+    <vueHeadful title="Создание инструкции" description="Создание инструкции" />
     <div class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5>Создание инструкции</h5>
       <hr />
@@ -28,9 +29,13 @@
 
 <script>
 // @ is an alias to /src
+import vueHeadful from "vue-headful";
 
 export default {
   name: "create",
+  components: {
+    vueHeadful
+  },
   data() {
     return {
       title: "",

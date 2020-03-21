@@ -1,5 +1,6 @@
 <template>
   <div class="create row justify-content-sm-center">
+    <vueHeadful title="Создание инструкции" description="Создание инструкции" />
     <div class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5 class="d-flex justify-content-between">
         <span>Создание шага</span>
@@ -36,9 +37,13 @@
 <script>
 // @ is an alias to /src
 import { storage } from "@/main.js";
+import vueHeadful from "vue-headful";
 
 export default {
   name: "createstep",
+  components: {
+    vueHeadful
+  },
   data() {
     return {
       title: "",

@@ -1,12 +1,13 @@
 <template>
   <div class="row justify-content-center">
+    <vueHeadful title="О приложении" description="Simpin - это приложение для создания простых инструкций" />
     <div class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5>
         О приложении
         <small>v1.0.2</small>
       </h5>
       <hr />
-      <p class="text-left">Приложение для создания простых инструкций. Один шаг - одно простое действие. Создавайте и делитесь инструкциями с друзьями.</p>
+      <p class="text-left">Simpin - это приложение для создания простых инструкций. Один шаг - одно простое действие. Создавайте и делитесь инструкциями с друзьями.</p>
       <p>
         Для того чтобы создать инструкцию, необходимо
         <router-link to="/login?status=reg">зарегистрироваться</router-link>.
@@ -21,3 +22,12 @@
     </div>
   </div>
 </template>
+<script>
+import vueHeadful from "vue-headful";
+
+export default {
+  components: {
+    vueHeadful
+  }
+};
+</script>

@@ -1,5 +1,6 @@
 <template>
   <div class="row justify-content-center">
+    <vueHeadful title="Список инструкций" description="Список инструкций" />
     <div class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5 class="d-flex justify-content-between">
         <span>Список инструкций</span>
@@ -36,11 +37,14 @@
 // @ is an alias to /src
 import InstructionItem from "@/components/InstructionItem";
 import Loader from "@/components/Loader";
+import vueHeadful from "vue-headful";
+
 export default {
   name: "list",
   components: {
     InstructionItem,
-    Loader
+    Loader,
+    vueHeadful
   },
   data() {
     return {

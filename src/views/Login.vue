@@ -1,5 +1,6 @@
 <template>
   <div class="row justify-content-center">
+    <vueHeadful title="Вход | регистрация" description="Вход | регистрация" />
     <div v-if="user" class="col-12 col-sm-8 col-md-6 col-xl-4 text-left">
       <h5>Вы уже авторизированы</h5>
       <hr />
@@ -34,8 +35,13 @@
 
 <script>
 import { auth } from "@/main.js";
+import vueHeadful from "vue-headful";
+
 export default {
   name: "login",
+  components: {
+    vueHeadful
+  },
   data() {
     return {
       email: "",

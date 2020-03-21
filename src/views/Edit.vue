@@ -1,5 +1,6 @@
 <template>
   <div class="create row justify-content-sm-center">
+    <vueHeadful title="Редактирование инструкции" description="Редактирование инструкции" />
     <div v-if="instruction" class="col-12 col-sm-8 col-md-6 col-xl-6">
       <h5>Редактирование инструкции</h5>
       <hr />
@@ -27,7 +28,13 @@
 </template>
 
 <script>
+import vueHeadful from "vue-headful";
+
 export default {
+  name: "edit",
+  components: {
+    vueHeadful
+  },
   data() {
     return {
       title: "",
